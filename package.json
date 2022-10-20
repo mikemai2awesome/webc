@@ -1,0 +1,19 @@
+{
+  "name": "someantics-webc",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "eleventy",
+    "dev": "eleventy --serve",
+    "start": "npm run dev"
+  },
+  "keywords": [
+    "eleventy",
+    "webc"
+  ],
+  "author": "W. Evan Sheehan <darth_mall@pm.me>",
+  "license": "AGPL-3.0-or-later",
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.0-canary.16"
+  }
+}

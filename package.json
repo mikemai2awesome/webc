@@ -14,6 +14,7 @@
   "author": "W. Evan Sheehan <darth_mall@pm.me>",
   "license": "AGPL-3.0-or-later",
   "devDependencies": {
-    "@11ty/eleventy": "^2.0.0-canary.16"
+    "@11ty/eleventy": "^2.0.0-canary.16",
+    "@11ty/eleventy-plugin-webc": "^0.5.1"
   }
 }

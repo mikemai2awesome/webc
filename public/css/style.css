@@ -151,4 +151,7 @@
 	.flow > * + * {
 		margin-block-start: var(--space-m);
 	}
+
+	.grid-full { grid-column: full; }
+	.grid-popout { grid-column: popout; }
 }

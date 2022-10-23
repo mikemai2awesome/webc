@@ -8,15 +8,38 @@
 	<meta property="og:title" content="{{ title }}">
   <meta property="og:description" name="description" content="{{ description }}">
 	<!-- FIXME -->
-  <meta property="og:image" content="https://hell.meiert.org/core/png/test.png">
+  <meta property="og:image" content="/img/vinyl-yolo.jpg">
 
 	<link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 	<main class="content flow">
+		<!-- hero -->
+		<div class="grid-popout">
+			<h1>{{ title }}</h1>
+			<img src="{{ hero.src }}" alt="{{ hero.alt }}">
+			<aside>{{ hero.credit | safe }}</aside>
+		</div>
+		<!-- /hero -->
+
+		{{ test.msg }}
 		{% block main -%}
 			{{ content | safe }}
 		{%- endblock %}
+
+		<div class="grid grid-popout">
+			{%- for image in gallery -%}
+				<!-- card -->
+				<div>
+					<strong>{{ image.title }}</strong>
+					<img src="{{ image.src }}" alt="{{ image.alt }}">
+					<p>{{ image.description }}</p>
+					<aside>{{ image.credit | safe }}</aside>
+				</div>
+				<!-- /card -->
+			{%- endfor -%}
+		</div>
+
 	</main>
 </body>
 </html>

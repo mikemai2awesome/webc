@@ -2,6 +2,8 @@
 
 An exercise in building a website with [Eleventy](https://11ty.dev/), [WebC](https://github.com/11ty/webc), and [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components) for [Some Antics](https://someantics.dev/).
 
+View the final version at [yolo-vinyl.netlify.app](https://yolo-vinyl.netlify.app/).
+
 ## Goals
 
 1. Create a hero component for the site as a single-file component (SFC)

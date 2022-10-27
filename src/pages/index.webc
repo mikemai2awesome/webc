@@ -31,10 +31,12 @@ Green juice mumblecore lomo, godard keffiyeh ascot freegan pork belly.
 
 			for (let img of this.gallery) {
 				cards.push(`<yolo-card>
-					<strong>${img.title}</strong>
-					<img src="${img.src}" alt="${img.alt}" width="${img.width}" height="${img.height}">
-					<p>${img.description}</p>
-					<aside>${img.credit}</aside>
+					<div webc:nokeep>
+						<strong slot="title">${img.title}</strong>
+						<img slot="media" src="${img.src}" alt="${img.alt}" width="${img.width}" height="${img.height}">
+						<p slot="description">${img.description}</p>
+						<aside slot="credit">${img.credit}</aside>
+					</div>
 				</yolo-card>`);
 			}
 

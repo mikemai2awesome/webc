@@ -21,5 +21,8 @@
 			{{ content | safe }}
 		{%- endblock %}
 	</main>
+	<script>
+		{{ page.url | webcGetJs | safe }}
+	</script>
 </body>
 </html>

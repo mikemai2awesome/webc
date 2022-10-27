@@ -1,3 +1,12 @@
+<template shadowroot="open">
+	<slot name="media"></slot>
+	<slot name="title"></slot>
+	<slot name="description"></slot>
+	<slot name="credit"></slot>
+</template>
+
+<slot></slot>
+
 <style>
 	yolo-card:not(:defined) {
 		display: flex;
@@ -14,3 +23,17 @@
 		object-fit: cover;
 	}
 </style>
+
+<script>
+customElements.define("yolo-card", class extends HTMLElement {
+	connectedCallback() {
+		// Declarative shadow DOM polyfill
+		let root = this.shadowRoot;
+		if (!root) {
+			root = this.attachShadow({ mode: "open" });
+			const template = this.querySelector(":scope > [shadowroot]");
+			root.appendChild(template.content.cloneNode(true));
+		}
+	}
+});
+</script>

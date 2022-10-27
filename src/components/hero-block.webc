@@ -1,0 +1,36 @@
+<div class="hero" webc:root webc:keep>
+	<slot name="media"></slot>
+	<slot></slot>
+	<slot name="credit"></slot>
+</div>
+
+<style>
+.hero {
+	contain: paint;
+
+	display: grid;
+	grid-template-areas: main;
+	place-items: center;
+
+	border-radius: var(--radius-l);
+}
+
+.hero > * {
+	grid-area: main;
+}
+
+.hero > *:not(aside) {
+	color: var(--surface-1);
+}
+
+.hero > aside {
+	place-self: end;
+
+	border-top-left-radius: var(--radius-m);
+	border-bottom-left-radius: var(--radius-m);
+	padding: var(--space-xs);
+
+	transform: translateY(-1em);
+	background-color: var(--surface-1);
+}
+</style>

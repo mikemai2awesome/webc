@@ -30,7 +30,7 @@ Green juice mumblecore lomo, godard keffiyeh ascot freegan pork belly.
 			const cards = [];
 
 			for (let img of this.gallery) {
-				cards.push(`<yolo-card>
+				cards.push(`<yolo-card label="${img.label}">
 					<div webc:nokeep>
 						<strong slot="title">${img.title}</strong>
 						<img slot="media" src="${img.src}" alt="${img.alt}" width="${img.width}" height="${img.height}">

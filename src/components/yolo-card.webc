@@ -1,8 +1,61 @@
 <template shadowroot="open">
-	<slot name="media"></slot>
-	<slot name="title"></slot>
-	<slot name="description"></slot>
-	<slot name="credit"></slot>
+	<style>
+		#root {
+			display: grid;
+			grid-template-columns: var(--space-s) 1fr var(--space-s);
+			grid-template-rows: repeat(2, min-content) repeat(4, min-content var(--space-s));
+			grid-auto-flow: row;
+		}
+
+		.label {
+			grid-column: 2 / 3;
+			grid-row: 1 / 3;
+			place-self: center start;
+
+			padding-inline: 0.5em;
+
+			background-color: var(--surface-1);
+		}
+
+		.border {
+			border: 1px solid var(--text-2);
+			border-radius: var(--radius-m);
+			grid-column: 1 / -1;
+			grid-row: 2 / -1;
+		}
+
+		::slotted(*) {
+			grid-column: 2 / 3;
+		}
+
+		::slotted([slot=media]) {
+			grid-row-start: 3;
+		}
+
+		::slotted([slot=title]) {
+			grid-row-start: 5;
+		}
+
+		::slotted([slot=description]) {
+			grid-row-start: 7;
+		}
+
+		::slotted([slot=credit]) {
+			grid-row-start: 9;
+			justify-self: end;
+		}
+	</style>
+
+	<div id="root">
+		<div class="border"></div>
+
+		<slot name="media"></slot>
+		<slot name="title"></slot>
+		<slot name="description"></slot>
+		<slot name="credit"></slot>
+
+		<div class="label" @html="label"></div>
+	</div>
 </template>
 
 <slot></slot>

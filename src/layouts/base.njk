@@ -11,6 +11,9 @@
   <meta property="og:image" content="/img/vinyl-yolo.jpg">
 
 	<link rel="stylesheet" href="/css/style.css">
+	<style>
+		{{ page.url | webcGetCss | safe }}
+	</style>
 </head>
 <body>
 	<main class="content flow">

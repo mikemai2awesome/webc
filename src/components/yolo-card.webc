@@ -1,0 +1,16 @@
+<style>
+	yolo-card:not(:defined) {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-s);
+	}
+
+	yolo-card:not(:defined) [slot=credit] {
+		margin-block-start: auto;
+	}
+
+	yolo-card img {
+		aspect-ratio: 1.618;
+		object-fit: cover;
+	}
+</style>

@@ -1,0 +1,154 @@
+@layer reset {
+	*,
+	*::after,
+	*::before {
+		box-sizing: border-box;
+		margin: 0;
+		padding: 0;
+	}
+
+	html {
+		color-scheme: light dark;
+	}
+
+	body {
+		min-block-size: 100vh;
+		padding-block: 2rem;
+
+		font-family: system-ui, sans-serif;
+		line-height: 1.5;
+		-webkit-font-smoothing: antialiased;
+		-webkit-text-size-adjust: none;
+		text-size-adjust: none;
+	}
+
+	img, svg {
+		display: block;
+		max-inline-size: 100%;
+		block-size: auto;
+	}
+
+	[role=list] {
+		padding: none;
+		list-style: none;
+	}
+
+	@media (prefers-reduced-motion: no-preference) {
+		html:focus-within {
+			scroll-behavior: smooth;
+		}
+	}
+}
+
+@layer config {
+	:root {
+		/* @link https://utopia.fyi/type/calculator?c=320,18,1.2,1140,24,1.414,5,1,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l */
+		--step--2: clamp(0.75rem, calc(0.79rem + -0.06vw), 0.78rem);
+		--step--1: clamp(0.94rem, calc(0.89rem + 0.24vw), 1.06rem);
+		--step-0: clamp(1.13rem, calc(0.98rem + 0.73vw), 1.50rem);
+		--step-1: clamp(1.35rem, calc(1.05rem + 1.50vw), 2.12rem);
+		--step-2: clamp(1.62rem, calc(1.08rem + 2.69vw), 3.00rem);
+		--step-3: clamp(1.94rem, calc(1.05rem + 4.48vw), 4.24rem);
+		--step-4: clamp(2.33rem, calc(0.90rem + 7.15vw), 6.00rem);
+		--step-5: clamp(2.80rem, calc(0.58rem + 11.08vw), 8.48rem);
+
+		/* @link https://utopia.fyi/space/calculator?c=320,18,1.2,1140,24,1.414,5,1,&s=0.75,1.5|3|4,s-l */
+		--space-xs: clamp(0.88rem, calc(0.78rem + 0.49vw), 1.13rem);
+		--space-s: clamp(1.13rem, calc(0.98rem + 0.73vw), 1.50rem);
+		--space-m: clamp(1.69rem, calc(1.47rem + 1.10vw), 2.25rem);
+		--space-l: clamp(3.38rem, calc(2.94rem + 2.20vw), 4.50rem);
+		--space-xl: clamp(4.50rem, calc(3.91rem + 2.93vw), 6.00rem);
+		/* One-up pairs */
+		--space-xs-s: clamp(0.88rem, calc(0.63rem + 1.22vw), 1.50rem);
+		--space-s-m: clamp(1.13rem, calc(0.69rem + 2.20vw), 2.25rem);
+		--space-m-l: clamp(1.69rem, calc(0.59rem + 5.49vw), 4.50rem);
+		--space-l-xl: clamp(3.38rem, calc(2.35rem + 5.12vw), 6.00rem);
+
+		--radius-m: 0.25rem;
+		--radius-l: 0.5rem;
+
+		--gray-1: #FFFAFA;
+		--gray-2: #727072;
+		--gray-3: #4B5358;
+		--gray-4: #182025;
+
+		--blue-1: #0065A3;
+		--blue-2: #234B6C;
+
+		--surface-1: var(--gray-1);
+		--text-1: var(--gray-4);
+		--text-2: var(--gray-3);
+
+		--link: var(--blue-2);
+		--link-hover: var(--blue-1);
+		--link-visited: var(--gray-2);
+
+		--measure: 65ch;
+
+		--gap: var(--space-s-m);
+		--full: minmax(var(--gap), 1fr);
+		--popout: minmax(0, 12rem);
+		--content: min(var(--measure), 100% - var(--gap) * 2);
+	}
+}
+
+@layer default {
+	html {
+		background-color: var(--surface-1);
+		color: var(--text-1);
+	}
+
+	body {
+		display: flex;
+		flex-direction: column;
+
+		font-size: var(--step-0);
+	}
+
+	main {
+		flex-grow: 1;
+	}
+
+	h1 {
+		font-size: var(--step-5);
+	}
+
+	h2 {
+		font-size: var(--step-3);
+	}
+
+	aside {
+		font-size: var(--step--2);
+	}
+}
+
+@layer layout {
+	.content {
+		display: grid;
+
+		/* @link https://ryanmulligan.dev/blog/layout-breakouts/ */
+		grid-template-columns:
+			[full-start] var(--full)
+			[popout-start] var(--popout)
+			[content-start] var(--content) [content-end]
+			var(--popout) [popout-end]
+			var(--full) [full-end];
+		grid-auto-rows: min-content;
+	}
+
+	.content > * {
+		grid-column: content;
+	}
+
+	.grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(min(15rem, 100%), 1fr));
+		gap: var(--gap, 1rem);
+	}
+}
+
+@layer utility {
+	.flow > * + * {
+		margin-block-start: var(--space-m);
+	}
+}

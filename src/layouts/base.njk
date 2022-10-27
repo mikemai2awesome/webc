@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{{ title }}</title>
+
+	<meta name="twitter:card" content="summary_large_image">
+	<meta property="og:title" content="{{ title }}">
+  <meta property="og:description" name="description" content="{{ description }}">
+	<!-- FIXME -->
+  <meta property="og:image" content="https://hell.meiert.org/core/png/test.png">
+
+	<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+	<main class="content flow">
+		{% block main -%}
+			{{ content | safe }}
+		{%- endblock %}
+	</main>
+</body>
+</html>

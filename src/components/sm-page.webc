@@ -1,0 +1,79 @@
+<div webc:root webc:keep>
+  <slot></slot>
+</div>
+
+<style webc:scoped>
+  :host {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    margin: 0;
+    min-block-size: 100vh;
+    min-block-size: 100dvb;
+  }
+
+  :host > * {
+    inline-size: 100vw;
+    margin: 0;
+  }
+
+  :host main {
+    padding-block: clamp(var(--stack) * 1, 10vmax, var(--stack) * 2);
+    padding-inline: var(--page-padding-inline);
+  }
+
+  :host > :is(header, footer) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: calc(var(--gutter) / 1.5);
+    row-gap: calc(var(--stack) / 2);
+  }
+
+  :host > :is(header, footer > *:only-child) {
+    margin-block: 0;
+    margin-inline: auto;
+  }
+
+  :host > footer {
+    padding-block: clamp(var(--stack) * 1, 10vmax, var(--stack) * 2)
+      clamp(var(--stack) * 2, 10vmax, var(--stack) * 6);
+    padding-inline: var(--page-padding-inline);
+    border-block-start: var(--border-width) var(--border-style);
+  }
+
+  :host > header {
+    padding-block: clamp(var(--stack) * 2, 10vmax, var(--stack) * 6)
+      clamp(var(--stack) * 1, 10vmax, var(--stack) * 2);
+    padding-inline: var(--page-padding-inline);
+    border-block-end: var(--border-width) var(--border-style);
+  }
+
+  :host > header a {
+    text-decoration: none;
+  }
+
+  :host > header a:hover {
+    text-decoration: underline;
+  }
+
+  :host > header :is(h1 a, > h1, > a) {
+    display: block;
+    font-size: clamp(2.25rem, 2.125rem + 0.5vw, 2.75rem);
+    font-weight: var(--font-weight-bold);
+    line-height: 1;
+    letter-spacing: 0.02em;
+  }
+
+  :host > header > nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: calc(var(--gutter) / 2);
+    row-gap: calc(var(--stack) / 2);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 0.9em;
+  }
+</style>

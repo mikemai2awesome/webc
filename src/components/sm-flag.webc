@@ -1,0 +1,26 @@
+<div webc:root webc:keep>
+  <slot name="signifier"></slot>
+  <slot></slot>
+</div>
+
+<style webc:scoped>
+  :host {
+    display: grid;
+    grid-template-columns: minmax(5ch, max-content) 75%;
+    gap: var(--gutter);
+    align-items: center;
+    margin-block-start: var(--stack);
+  }
+
+  :host:first-child {
+    margin-block-start: 0;
+  }
+
+  :host > * {
+    margin: 0;
+  }
+
+  :host > *:nth-child(odd) {
+    align-self: start;
+  }
+</style>

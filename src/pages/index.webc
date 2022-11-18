@@ -3,5 +3,473 @@ title: SuperMinimalDS
 description: Minimalist black and white design system.
 layout: base.njk
 ---
-<h1 @html="{{ title }}"></h1>
-<p>This is a test</p>
+<sm-page>
+	<header>
+		<h1>Super&shy;Minimal&shy;DS</h1>
+		<nav>
+			<ul>
+				<li><a href="#foundations">Foundations</a></li>
+				<li><a href="#elements">Elements</a></li>
+				<li><a href="#components">Components</a></li>
+			</ul>
+		</nav>
+	</header>
+  <main id="main-content">
+    <h2>About</h2>
+		<p><big><span @html="{{ title }}"></span> is <strong>black &amp; white</strong> CSS awesomeness with nice typography (for both English and Chinese). <q>Less is more</q> is the main principle of this mini design system.</big></p>
+		<figure>
+			<table>
+				<tbody>
+					<tr>
+						<th width=1 aria-label="No">&#10005;</th>
+						<td>Colors</td>
+					</tr>
+					<tr>
+						<th width=1 aria-label="No">&#10005;</th>
+						<td>Classes</td>
+					</tr>
+					<tr>
+						<th width=1 aria-label="No">&#10005;</th>
+						<td>Gradients</td>
+					</tr>
+					<tr>
+						<th width=1 aria-label="No">&#10005;</th>
+						<td>Animations</td>
+					</tr>
+					<tr>
+						<th width=1 aria-label="No">&#10005;</th>
+						<td>Breakpoints</td>
+					</tr>
+					<tr>
+						<th width=1 aria-label="No">&#10005;</th>
+						<td>Custom fonts</td>
+					</tr>
+					<tr>
+						<th width=1 aria-label="Yes">&check;</th>
+						<td>Auto dark mode</td>
+					</tr>
+					<tr>
+						<th width=1 aria-label="Yes">&check;</th>
+						<td>Hover &amp; focus styles</td>
+					</tr>
+					<tr>
+						<th width=1 aria-label="Yes">&check;</th>
+						<td>Fluid typography &amp; spacing</td>
+					</tr>
+					<tr>
+						<th width=1 aria-label="Yes">&check;</th>
+						<td>Zoom &amp; font-size compatibility</td>
+					</tr>
+					<tr>
+						<th width=1 aria-label="Yes">&check;</th>
+						<td>Under 10KB minified file size</td>
+					</tr>
+				</tbody>
+			</table>
+			<figcaption><span @html="{{ title }}"></span>&rsquo;s design guidelines.</figcaption>
+		</figure>
+    <hr>
+    <h2 id="foundations">Foundations</h2>
+    <p>The system is built on a small set of design tokens.</p>
+		<h3>Color (or lack thereof)</h3>
+		<figure>
+			<table>
+				<thead>
+					<tr>
+						<th>Token</th>
+						<th>Value</th>
+						<th width=100%>Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>--color-text</td>
+						<td>#f4f4f4</td>
+						<td>The page text color.</td>
+					</tr>
+					<tr>
+						<td>--color-bg</td>
+						<td>#202020</td>
+						<td>The page background color.</td>
+					</tr>
+				</tbody>
+			</table>
+		</figure>
+		<p>Everything is black and white. Actually, off-black and off-white because the strong contrast of true black and white will hurt your eyes. You are welcome.</p>
+		<p>There are only 2 tokens: page text color and page background color. The two colors are basically the opposite of each other, which means high contrast. Each element is colored with considerations to that relationship.</p>
+		<h3>Spacing</h3>
+		<figure>
+			<table>
+				<thead>
+					<tr>
+						<th>Token</th>
+						<th width=50%>Value</th>
+						<th width=50%>Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>--gutter</td>
+						<td>Scale from 1ch to 3ch</td>
+						<td>The inline spacing base and the grid gutter.</td>
+					</tr>
+					<tr>
+						<td>--stack</td>
+						<td>Scale from 1.25ex to 1.75ex</td>
+						<td>The block spacing base and the default paragraph spacing.</td>
+					</tr>
+					<tr>
+						<td>--line-length</td>
+						<td>75ch</td>
+						<td>The optimal line length for reading.</td>
+					</tr>
+					<tr>
+						<td>--page-padding-inline</td>
+						<td>Scale from 10vw to whatever is available after subtracting the optimal line length of 75ch from 100% viewpoint width</td>
+						<td>The inline inset spacing of a single-column page layout.</td>
+					</tr>
+				</tbody>
+			</table>
+		</figure>
+		<p>Spacing is fluid. It scales with viewport and character width horizontally; it scales with viewport and x-height vertically. This approach allows any System UI font to have unique spacing.</p>
+		<p>There is no range of spacing tokens, only the base ones. For each use case, spacing is calculated using the base tokens.</p>
+		<h3>Typography</h3>
+		<figure>
+			<table>
+				<thead>
+					<tr>
+						<th>Token</th>
+						<th width=50%>Value</th>
+						<th width=50%>Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>--font</td>
+						<td>System UI Sans</td>
+						<td>The sans-serif font for heading and body text.</td>
+					</tr>
+					<tr>
+						<td>--font-italic</td>
+						<td>Georgia</td>
+						<td>The classic font is used solely for blockquotes and italic text (because italic sans-serif is ugly).</td>
+					</tr>
+					<tr>
+						<td>--font-code</td>
+						<td>System UI Monospace</td>
+						<td>The monospace font for code text.</td>
+					</tr>
+					<tr>
+						<td>--font-size</td>
+						<td>100%</td>
+						<td>The root font-size of a page.</td>
+					</tr>
+				</tbody>
+			</table>
+		</figure>
+		<p>System UI fonts are applied to optimize performance and the heading hierarchy is defined by the browser defaults.</p>
+		<p>The root font-size is fluid, which allows all text to scale with viewport.</p>
+		<hr>
+		<h2 id="elements">Elements</h2>
+		<p>Elements are stylized naked <code>HTML</code> elements.</p>
+		<details>
+			<summary><strong>Details and Summary</strong></summary>
+			<p>You are looking at it. This is the <q>details</q> and you just clicked <q>summary</q> to expand it.</p>
+		</details>
+		<details>
+			<summary><strong>Inline Text</strong></summary>
+			<p>There are various ways to style text: <em>emphasis (italic)</em>, <strong>strong emphasis (bold)</strong>, <a href="#!">link</a>, <abbr title="Abbreviation">abbr</abbr>, <code>code</code>, <kbd>key</kbd>, super<sup>script</sup>, sub<sub>script</sub>, <small>small</small>, and <q>quote</q>.</p>
+		</details>
+		<details>
+			<summary><strong>Blockquote</strong></summary>
+			<blockquote>
+				<p>
+					<q>Simplicity is the ultimate sophistication.</q>
+				</p>
+				<footer>
+					<small>&mdash;&thinsp;Leonardo da Vinci</small>
+				</footer>
+			</blockquote>
+		</details>
+		<details>
+			<summary><strong>Code Block</strong></summary>
+			<pre><code>// This is a block of code.<br>pre { display: block; }</code></pre>
+		</details>
+		<details>
+			<summary><strong>Description List</strong></summary>
+			<dl>
+				<dt>Beast of Bodmin</dt>
+				<dd>A large feline inhabiting Bodmin Moor.</dd>
+				<dt>Morgawr</dt>
+				<dd>A sea serpent.</dd>
+				<dt>Owlman</dt>
+				<dd>A giant owl-like creature.</dd>
+			</dl>
+		</details>
+		<details>
+			<summary><strong>Un-ordered List</strong></summary>
+			<ul>
+				<li>This is a list item.</li>
+				<li>
+					This is 1st level.
+					<ul>
+						<li>
+							This is 2nd level.
+							<ul>
+								<li>
+									This is 3rd level.
+								</li>
+								<li>
+									This is 3rd level.
+								</li>
+							</ul>
+						</li>
+						<li>
+							This is 2nd level.
+						</li>
+					</ul>
+				</li>
+				<li>This is a list item.</li>
+			</ul>
+		</details>
+		<details>
+			<summary><strong>Ordered List</strong></summary>
+			<ol>
+				<li>This is a list item.</li>
+				<li>
+					This is 1st level.
+					<ol>
+						<li>
+							This is 2nd level.
+							<ol>
+								<li>
+									This is 3rd level.
+								</li>
+								<li>
+									This is 3rd level.
+								</li>
+							</ol>
+						</li>
+						<li>
+							This is 2nd level.
+						</li>
+					</ol>
+				</li>
+				<li>This is a list item.</li>
+			</ol>
+		</details>
+		<details>
+			<summary><strong>Figure</strong></summary>
+			<figure>
+				<img src="https://via.placeholder.com/1600x900" alt="Placeholder" width=1600 height=900>
+				<figcaption>
+					Fig 1: This figure has an image and figcaption.
+				</figcaption>
+			</figure>
+		</details>
+		<details>
+			<summary><strong>Table</strong></summary>
+			<figure>
+				<table>
+					<thead>
+						<tr>
+							<td></td>
+							<th>Top Heading</th>
+							<th>Top Heading</th>
+							<th>Top Heading</th>
+							<th>Top Heading</th>
+							<th>Top Heading</th>
+							<th>Top Heading</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th>Side Heading</th>
+							<td>Cell</td>
+							<td>Cell</td>
+							<td>Cell</td>
+							<td>Cell</td>
+							<td>Cell</td>
+							<td>Cell</td>
+						</tr>
+						<tr>
+							<th>Side Heading</th>
+							<td>Cell</td>
+							<td>Cell</td>
+							<td>Cell</td>
+							<td>Cell</td>
+							<td>Cell</td>
+							<td>Cell</td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<th>Footer Side Heading</th>
+							<td>Footer cell</td>
+							<td>Footer cell</td>
+							<td>Footer cell</td>
+							<td>Footer cell</td>
+							<td>Footer cell</td>
+							<td>Footer cell</td>
+						</tr>
+					</tfoot>
+					<caption>Table caption.</caption>
+				</table>
+			</figure>
+		</details>
+		<details>
+			<summary><strong>Form Elements</strong></summary>
+			<form action="submit">
+				<fieldset>
+					<legend>This is a fieldset</legend>
+					<ol>
+						<li>
+							<label for="select">Select</label>
+							<select name="select" id="select">
+								<option value="Option 1">Option 1</option>
+								<option value="Option 2">Option 2</option>
+							</select>
+						</li>
+						<li>
+							<label for="regular">Text input</label>
+							<input type="text" id="regular" aria-describedby="hint-text">
+						</li>
+						<li>
+							<label for="valid">Valid (required)</label>
+							<input type="email" id="valid" value="lol@omg.com" required>
+							<mark id="error-1"><strong>&#9888;&thinsp;Error:</strong> please enter a valid email.</mark>
+						</li>
+						<li>
+							<label for="invalid">Invalid (required)</label>
+							<input type="email" id="invalid" value="@omg" required>
+							<mark id="error-2"><strong>&#9888;&thinsp;Error:</strong> please enter a valid email.</mark>
+						</li>
+						<li>
+							<label for="disabled">Disabled</label>
+							<input type="text" id="disabled" value="Inaccessible" disabled>
+						</li>
+						<li>
+							<label for="readonly">Read-only</label>
+							<input type="text" id="readonly" value="You can only read" readonly>
+						</li>
+						<li>
+							<label>Text area</label>
+							<textarea name="textarea" rows="5" aria-describedby="hint"></textarea>
+							<p id="hint"><strong>&uarr;&thinsp;Note:</strong> plain text and HTML are allowed.</p>
+						</li>
+						<li>
+							<label for="upload">Upload an image</label>
+							<input name="upload" type="file">
+						</li>
+					</ol>
+				</fieldset>
+				<fieldset>
+					<legend>This is another fieldset</legend>
+					<ol>
+						<li>
+							<label>
+								<input type="radio" name="radio">
+								This is a radio input.
+							</label>
+						</li>
+						<li>
+							<label>
+								<input type="radio" name="radio">
+								This is a radio input.
+							</label>
+						</li>
+					</ol>
+				</fieldset>
+				<fieldset>
+					<legend>This is yet another fieldset</legend>
+					<ol>
+						<li>
+							<label>
+								<input type="checkbox" name="checkbox">
+								This is a checkbox input.
+							</label>
+						</li>
+						<li>
+							<label>
+								<input type="checkbox" name="checkbox">
+								This is a checkbox input.
+							</label>
+						</li>
+					</ol>
+				</fieldset>
+				<p>
+					<button type="submit">Submit</button> <button type="reset">Cancel</button>
+				</p>
+			</form>
+		</details>
+		<details>
+			<summary><strong>Headings</strong></summary>
+			<h2>This is H2</h2>
+			<h3>This is H3</h3>
+			<h4>This is H4</h4>
+			<h5>This is H5</h5>
+			<h6>This is H6</h6>
+		</details>
+		<details>
+			<summary><strong>Skip link</strong></summary>
+			<p>Hard refresh the page and hit the <kbd>tab</kbd> key. Skip link must be the first child of the <code>&lt;body&gt;</code> element.</p>
+		</details>
+		<hr>
+		<h2 id="components">Components</h2>
+		<p>Components are stylized custom elements.</p>
+		<details>
+			<summary><strong>Grid</strong></summary>
+			<div data-layout="grid">
+				<img src="https://via.placeholder.com/450x300" alt="Placeholder" width=450 height=300>
+				<img src="https://via.placeholder.com/450x300" alt="Placeholder" width=450 height=300>
+				<img src="https://via.placeholder.com/450x300" alt="Placeholder" width=450 height=300>
+				<img src="https://via.placeholder.com/450x300" alt="Placeholder" width=450 height=300>
+				<img src="https://via.placeholder.com/450x300" alt="Placeholder" width=450 height=300>
+				<img src="https://via.placeholder.com/450x300" alt="Placeholder" width=450 height=300>
+			</div>
+		</details>
+		<h3>Flag</h3>
+    <p>A Flag is composed of a signifier (image, icon, etc.) and content.</p>
+    <details>
+      <summary>Flag Demo</summary>
+      <sm-flag>
+        <img slot="signifier" src="https://via.placeholder.com/250x250" alt="Placeholder" width=250 height=250>
+        <div>
+          <h4>Flag Heading</h4>
+          <p>Flag paragraph. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae cupiditate, praesentium ducimus necessitatibus tenetur molestias est fuga consequuntur maiores.</p>
+        </div>
+      </sm-flag>
+    </details>
+    <details open>
+      <summary>Flag Code</summary>
+      <pre><code>&lt;sm-flag&gt;
+&nbsp;&nbsp;&lt;img slot="signifier" src="https://via.placeholder.com/250x250" alt="Placeholder" width=250 height=250&gt;
+&nbsp;&nbsp;&lt;div&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;h4&gt;Flag Heading&lt;/h4&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Flag paragraph. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae cupiditate, praesentium ducimus necessitatibus tenetur molestias est fuga consequuntur maiores.&lt;/p&gt;
+&nbsp;&nbsp;&lt;/div&gt;
+&lt;/sm-flag&gt;</code></pre>
+    </details>
+		<h3>Page</h3>
+    <p>The current page is a single column page layout with header and footer. Header and footer are pushed against the top and bottom of the page respectively, regardless of how tall the main content is. Page content has a max width of 75 characters, which is the optimal line length.</p>
+    <details open>
+      <summary>Page Code</summary>
+      <pre><code>&lt;sm-page&gt;
+&nbsp;&nbsp;&lt;header&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;Header
+&nbsp;&nbsp;&lt;/header&gt;
+&nbsp;&nbsp;&lt;main&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;Main content
+&nbsp;&nbsp;&lt;/main&gt;
+&nbsp;&nbsp;&lt;footer&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;Footer
+&nbsp;&nbsp;&lt;/footer&gt;
+&lt;/sm-page&gt;</code></pre>
+    </details>    
+  </main>
+	<footer>
+		<p>
+			<small>&copy; Nobody. Just use this as you like. Created by <a href="https://mikemai.net">Mike Mai</a>.</small>
+		</p>
+	</footer>
+</sm-page>

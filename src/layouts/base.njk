@@ -3,7 +3,7 @@
   <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>{{ title }}"</title>
+  <title>{{ title }}</title>
   <meta name="description" content="{{ description }}">
   <script src="/cdn-cgi/apps/head/Z5kPjcSfsgqjVyRhXu6mf9IS5oE.js"></script><link rel="canonical" href="https://mikemai.net/resume-now">
   <meta name="twitter:card" content="summary">
@@ -11,7 +11,7 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://mikemai.net/resume-now">
   <meta property="twitter:url" content="https://mikemai.net/resume-now">
-  <meta name="twitter:title" property="og:title" content="{{ title }}"">
+  <meta name="twitter:title" property="og:title" content="{{ title }}">
   <meta name="twitter:image" content="https://s3.amazonaws.com/mikemai/2017/img-profile.jpg">
   <meta property="og:image" content="https://s3.amazonaws.com/mikemai/2017/img-profile.jpg">
   <meta name="twitter:description" property="og:description" content="{{ description }}">
@@ -23,13 +23,12 @@
   <link rel="apple-touch-icon-precomposed" href="https://s3.amazonaws.com/mikemai/assets/img/ios/l/apple-touch-icon-precomposed.png">
   <link rel="icon" href="https://s3.amazonaws.com/mikemai/assets/img/favicon.ico">
   <link rel="stylesheet" href="/css/style.css">
+  <style>{{ page.url | webcGetCss | safe }}</style>
 </head>
 <body>
   <a href="#main-content">Skip to main content</a>
-	<main id="main-content">
-		{% block main -%}
-			{{ content | safe }}
-		{%- endblock %}
-	</main>
+  {% block main -%}
+    {{ content | safe }}
+  {%- endblock %}
 </body>
 </html>

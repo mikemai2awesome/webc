@@ -1,44 +1,7 @@
 ---
-title: Vinyl YOLO
-description: Shoreditch direct trade chicharrones DSA. Occupy vape mlkshk meggings. Tbh bicycle rights live-edge church-key whatever irony.
+title: SuperMinimalDS
+description: Minimalist black and white design system.
 layout: base.njk
 ---
-
-<!-- hero -->
-<div class="grid-popout">
-	<h1 @html="title"></h1>
-	<img src="/img/yolo-vinyl.jpg" alt="A vinyl record on a shelf; in the background another record sits on a turntable" width="2400" height="1600">
-	<aside>
-		Photo by <a href="https://unsplash.com/@minkmingle?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Mink Mingle</a> on <a href="https://unsplash.com/s/photos/vinyl-record-player?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
-	</aside>
-</div>
-<!-- /hero -->
-
-<template webc:type="11ty" 11ty:type="md">
-## Typewriter umami kinfolk
-
-Man braid etsy chambray swag.
-Sriracha four dollar toast shabby chic subway tile.
-Farm-to-table pabst letterpress viral vice succulents big mood.
-Occupy try-hard bitters tacos next level cliche, umami XOXO tofu letterpress activated charcoal tote bag.
-Green juice mumblecore lomo, godard keffiyeh ascot freegan pork belly.
-</template>
-
-<div class="grid grid-popout">
-	<script webc:type="render" webc:is="template">
-		function () {
-			const cards = [];
-
-			for (let img of this.gallery) {
-				cards.push(`<div>
-					<strong>${img.title}</strong>
-					<img src="${img.src}" alt="${img.alt}" width="${img.width}" height="${img.height}">
-					<p>${img.description}</p>
-					<aside>${img.credit}</aside>
-				</div>`);
-			}
-
-			return cards.join("");
-		}
-	</script>
-</div>
+<h1 @html="{{ title }}"></h1>
+<p>This is a test</p>

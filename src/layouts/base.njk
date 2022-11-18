@@ -1,19 +1,32 @@
-<!doctype html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>{{ title }}</title>
-
-	<meta name="twitter:card" content="summary_large_image">
-	<meta property="og:title" content="{{ title }}">
-  <meta property="og:description" name="description" content="{{ description }}">
-	<!-- FIXME -->
-  <meta property="og:image" content="/img/vinyl-yolo.jpg">
-
-	<link rel="stylesheet" href="/css/style.css">
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{{ title }}"</title>
+  <meta name="description" content="{{ description }}">
+  <script src="/cdn-cgi/apps/head/Z5kPjcSfsgqjVyRhXu6mf9IS5oE.js"></script><link rel="canonical" href="https://mikemai.net/resume-now">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@mikemai2awesome">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mikemai.net/resume-now">
+  <meta property="twitter:url" content="https://mikemai.net/resume-now">
+  <meta name="twitter:title" property="og:title" content="{{ title }}"">
+  <meta name="twitter:image" content="https://s3.amazonaws.com/mikemai/2017/img-profile.jpg">
+  <meta property="og:image" content="https://s3.amazonaws.com/mikemai/2017/img-profile.jpg">
+  <meta name="twitter:description" property="og:description" content="{{ description }}">
+  <link rel="me" href="https://github.com/mikemai2awesome">
+  <link rel="me" href="https://twitter.com/mikemai2awesome">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://s3.amazonaws.com/mikemai/assets/img/ios/h/touch-icon-ipad-retina.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://s3.amazonaws.com/mikemai/assets/img/ios/h/apple-touch-icon.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://s3.amazonaws.com/mikemai/assets/img/ios/m/apple-touch-icon.png">
+  <link rel="apple-touch-icon-precomposed" href="https://s3.amazonaws.com/mikemai/assets/img/ios/l/apple-touch-icon-precomposed.png">
+  <link rel="icon" href="https://s3.amazonaws.com/mikemai/assets/img/favicon.ico">
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-	<main class="content flow">
+  <a href="#main-content">Skip to main content</a>
+	<main id="main-content">
 		{% block main -%}
 			{{ content | safe }}
 		{%- endblock %}

@@ -1,157 +1,444 @@
-@layer reset {
-	*,
-	*::after,
-	*::before {
-		box-sizing: border-box;
-		margin: 0;
-		padding: 0;
-	}
-
-	html {
-		color-scheme: light dark;
-	}
-
-	body {
-		min-block-size: 100vh;
-		padding-block: 2rem;
-
-		font-family: system-ui, sans-serif;
-		line-height: 1.5;
-		-webkit-font-smoothing: antialiased;
-		-webkit-text-size-adjust: none;
-		text-size-adjust: none;
-	}
-
-	img, svg {
-		display: block;
-		max-inline-size: 100%;
-		block-size: auto;
-	}
-
-	[role=list] {
-		padding: none;
-		list-style: none;
-	}
-
-	@media (prefers-reduced-motion: no-preference) {
-		html:focus-within {
-			scroll-behavior: smooth;
-		}
-	}
-}
-
 @layer config {
+  :root {
+    --color-text: #202020;
+    --color-bg: #f4f4f4;
+    --font: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+      "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", sans-serif;
+    --font-italic: "Georgia", serif;
+    --font-code: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas,
+      Liberation Mono, monospace;
+    --font-size: 100%;
+    --font-weight-regular: 400;
+    --font-weight-semibold: 700;
+    --font-weight-bold: 900;
+    --tracking: -0.006em;
+    --leading: 1.45;
+    --gutter: clamp(1ch, 2.5vmax, 3ch);
+    --stack: clamp(1.25ex, 1ex + 2.5vmax, 1.75ex);
+    --line-length: 75ch;
+    --page-padding-inline: calc((100vw - min(var(--line-length), 80vw)) / 2);
+    --border-width: 1px;
+    --border-style: dashed;
+    --border-radius: 4px;
+    /* Uncomment font stretch if expanded and condensed fonts are not desired. */
+    /* --font-stretch: unset; */
+  }
+}
+
+@layer color {
 	:root {
-		/* @link https://utopia.fyi/type/calculator?c=320,18,1.2,1140,24,1.414,5,1,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l */
-		--step--2: clamp(0.75rem, calc(0.79rem + -0.06vw), 0.78rem);
-		--step--1: clamp(0.94rem, calc(0.89rem + 0.24vw), 1.06rem);
-		--step-0: clamp(1.13rem, calc(0.98rem + 0.73vw), 1.50rem);
-		--step-1: clamp(1.35rem, calc(1.05rem + 1.50vw), 2.12rem);
-		--step-2: clamp(1.62rem, calc(1.08rem + 2.69vw), 3.00rem);
-		--step-3: clamp(1.94rem, calc(1.05rem + 4.48vw), 4.24rem);
-		--step-4: clamp(2.33rem, calc(0.90rem + 7.15vw), 6.00rem);
-		--step-5: clamp(2.80rem, calc(0.58rem + 11.08vw), 8.48rem);
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    accent-color: var(--color-text);
+    color-scheme: light;
+  }
+  
+  :where(a) {
+    color: var(--color-text);
+  }
+  
+  :where(input, textarea, select) {
+    color: var(--color-text);
+    background-color: var(--color-bg);
+  }
+  
+  :where(button, code) {
+    color: var(--color-bg);
+    background-color: var(--color-text);
+  }
 
-		/* @link https://utopia.fyi/space/calculator?c=320,18,1.2,1140,24,1.414,5,1,&s=0.75,1.5|3|4,s-l */
-		--space-xs: clamp(0.88rem, calc(0.78rem + 0.49vw), 1.13rem);
-		--space-s: clamp(1.13rem, calc(0.98rem + 0.73vw), 1.50rem);
-		--space-m: clamp(1.69rem, calc(1.47rem + 1.10vw), 2.25rem);
-		--space-l: clamp(3.38rem, calc(2.94rem + 2.20vw), 4.50rem);
-		--space-xl: clamp(4.50rem, calc(3.91rem + 2.93vw), 6.00rem);
-		/* One-up pairs */
-		--space-xs-s: clamp(0.88rem, calc(0.63rem + 1.22vw), 1.50rem);
-		--space-s-m: clamp(1.13rem, calc(0.69rem + 2.20vw), 2.25rem);
-		--space-m-l: clamp(1.69rem, calc(0.59rem + 5.49vw), 4.50rem);
-		--space-l-xl: clamp(3.38rem, calc(2.35rem + 5.12vw), 6.00rem);
-
-		--radius-m: 0.25rem;
-		--radius-l: 0.5rem;
-
-		--gray-1: #FFFAFA;
-		--gray-2: #727072;
-		--gray-3: #4B5358;
-		--gray-4: #182025;
-
-		--blue-1: #0065A3;
-		--blue-2: #234B6C;
-
-		--surface-1: var(--gray-1);
-		--text-1: var(--gray-4);
-		--text-2: var(--gray-3);
-
-		--link: var(--blue-2);
-		--link-hover: var(--blue-1);
-		--link-visited: var(--gray-2);
-
-		--measure: 65ch;
-
-		--gap: var(--space-s-m);
-		--full: minmax(var(--gap), 1fr);
-		--popout: minmax(0, 12rem);
-		--content: min(var(--measure), 100% - var(--gap) * 2);
-	}
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --font-weight-regular: 300; /* Knock out text appears bolder, reduce weight to make body text more legible. */
+      --tracking: 0;
+      --color-text: #f4f4f4;
+      --color-bg: #101010;
+      color-scheme: dark;
+    }
+  
+    :where(input[type="checkbox"], input[type="radio"]) {
+      accent-color: var(--color-bg);
+    }
+  }
 }
 
-@layer default {
-	html {
-		background-color: var(--surface-1);
-		color: var(--text-1);
-	}
-
-	body {
-		display: flex;
-		flex-direction: column;
-
-		font-size: var(--step-0);
-	}
-
-	main {
-		flex-grow: 1;
-	}
-
-	h1 {
-		font-size: var(--step-5);
-	}
-
-	h2 {
-		font-size: var(--step-3);
-	}
-
-	aside {
-		font-size: var(--step--2);
-	}
+@layer typography {
+	:root {
+    font-size: clamp(
+      var(--font-size),
+      var(--font-size) * 0.9 + 0.25vw,
+      var(--font-size) * 2
+    ); /* % ensures browser zoom is supported. */
+    font-family: var(--font); /* Use system UI font. */
+    font-weight: var(--font-weight-regular);
+    line-height: var(--leading); /* Standard leading for good legibility. */
+    letter-spacing: var(--tracking);
+  }
+  
+  :where(button, select, input, textarea, a) {
+    font: inherit; /* Reset font. */
+  }
+  
+  :where(a) {
+    text-decoration: underline;
+    text-decoration-thickness: var(--border-width);
+    text-underline-offset: calc(var(--border-width) * 2);
+  }
+  
+  :where(a):hover {
+    text-decoration-thickness: calc(var(--border-width) * 3);
+  }
+  
+  :where(pre, code, kbd, dl, figcaption, abbr, table) {
+    font-family: var(
+      --font-code
+    ); /* Differentiate preformatted, code, description, and table text from body text. */
+  }
+  
+  :where(pre, code, kbd, dl, small, figcaption, table) {
+    font-size: 0.8em; /* Make monospace and small text smaller than body text. */
+  }
+  
+  :where(big) {
+    font-size: 1.2em; /* <big> is technically deprecated, but I love using it. This creates a fallback if a browser doesn't support it. */
+    letter-spacing: 0.006em;
+  }
+  
+  :where(pre code) {
+    display: block; /* Define block code. */
+    font-size: 1em; /* Prevent cascading. */
+  }
+  
+  :where(blockquote, em, i, cite) {
+    font-family: var(
+      --font-italic
+    ); /* Differentiate blockquote, citation, idiomatic, and emphasisized text from body text. Also, sans-serif italic is ugly. */
+    font-weight: var(
+      --font-weight-regular
+    ); /* Prevent italics to be bold. Bold italic is also ugly and unnecessary. */
+  }
+  
+  :where(blockquote) {
+    font-size: clamp(1.5rem, 1.25rem + 1vw, 3rem);
+    letter-spacing: 0;
+  }
+  
+  :where(blockquote p) {
+    max-inline-size: 35ch;
+  }
+  
+  :where(blockquote q)::before {
+    position: absolute;
+    transform: translateX(-100%);
+  }
+  
+  :where(strong, b, th, button) {
+    font-weight: var(
+      --font-weight-semibold
+    ); /* Make non-heading emphasized text less bold than heading text. */
+  }
+  
+  :where(h1, h2, h3, h4, h5, h6, summary strong, legend) {
+    font-weight: var(--font-weight-bold);
+  }
+  
+  :where(h1, h2, h3, h4, h5, h6, summary strong, legend, big) {
+    font-stretch: var(--font-stretch, expanded);
+  }
+  
+  :where(button, input[type="file"]) {
+    font-stretch: var(--font-stretch, condensed);
+  }
+  
+  :where(abbr) {
+    text-decoration: underline;
+    text-decoration-style: dotted; /* Differentiate abbreviaions from links. */
+    text-underline-offset: calc(var(--border-width) * 2);
+  }
+  
+  :where(button, label, select, summary) {
+    cursor: pointer;
+  }
+  
+  :where(summary:hover > *) {
+    text-decoration: underline;
+    text-underline-offset: calc(var(--border-width) * 2);
+  }
+  
+  :where(figcaption) {
+    text-align: center;
+  }
+  
+  :where(th) {
+    text-align: start;
+  }
+  
+  :where(th, td) {
+    vertical-align: baseline;
+  }
+  
+  :where(fieldset > ol) {
+    list-style: none;
+  }
+  
+  /* Chinese Typesetting */
+  [lang^="zh-"] {
+    --font-size: 90%;
+    --leading: 1.6;
+    --line-length: 45rem;
+  }
 }
 
-@layer layout {
-	.content {
-		display: grid;
-
-		/* @link https://ryanmulligan.dev/blog/layout-breakouts/ */
-		grid-template-columns:
-			[full-start] var(--full)
-			[popout-start] var(--popout)
-			[content-start] var(--content) [content-end]
-			var(--popout) [popout-end]
-			var(--full) [full-end];
-		grid-auto-rows: min-content;
-	}
-
-	.content > * {
-		grid-column: content;
-	}
-
-	.grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(min(15rem, 100%), 1fr));
-		gap: var(--gap, 1rem);
-	}
+@layer spacing {
+  :where(h1, h2, h3, h4, h5, h6, p, figure, form, pre, blockquote, ul, ol, dl, li, details) {
+    margin-block-end: 0;
+  }
+  
+  :where(h1, h2, h3, h4, h5, h6) {
+    margin-block-start: calc(var(--stack) * 1.75);
+  }
+  
+  :where(p, figure, form, fieldset, pre, blockquote, ul, ol, dl, details) {
+    margin-inline: 0;
+    margin-block-start: var(--stack);
+  }
+  
+  :where(h1, h2, h3, h4, h5, h6, p, figure, form, fieldset, pre, blockquote, ul, ol, dl, details):first-child,
+  :where(legend + *) {
+    margin-block-start: 0;
+  }
+  
+  :where(h1, h2, h3, h4, h5, h6) + * {
+    margin-block-start: calc(var(--stack) / 5);
+  }
+  
+  :where(ul, ol) {
+    padding: 0;
+  }
+  
+  :where(li > ul, li > ol) {
+    margin-block-start: calc(var(--stack) / 5);
+  }
+  
+  :where(details ul, details ol) {
+    margin-inline-start: 4ch; /* Unify indent for all lists inside details. */
+  }
+  
+  :where(li > ul, li > ol, fieldset ul, fieldset ol) {
+    margin-inline-start: 2.25ch; /* Unify indent for all nested lists. */
+  }
+  
+  :where(li + li) {
+    margin-block-start: calc(var(--stack) / 5);
+  }
+  
+  :where(fieldset > ol li + li) {
+    margin-block-start: calc(var(--stack) / 2);
+  }
+  
+  :where(fieldset > ol) {
+    margin-inline: 0;
+  }
+  
+  :where(hr) {
+    margin-block-start: calc(var(--stack) * 3);
+    margin-block-end: calc(var(--stack) * 3);
+  }
+  
+  :where(hr + *) {
+    margin-block-start: 0;
+  }
+  
+  :where(figure > img, table) {
+    margin-inline: auto;
+  }
+  
+  :where(blockquote > *) {
+    margin-block-start: calc(var(--stack) / 4);
+  }
+  
+  :where(blockquote:not(:last-child)) {
+    padding-block-end: calc(var(--stack) / 2);
+  }
+  
+  :where(button, dd, th, td) {
+    /* Unify inset spacing on bordered elements. */
+    padding-block: calc(var(--stack) / 6);
+    padding-inline: calc(var(--gutter) / 3);
+  }
+  
+  :where(input, textarea) {
+    padding-inline: 2px;
+  }
+  
+  :where(caption, figcaption) {
+    padding-block: calc(var(--stack) / 2);
+  }
+  
+  :where(code, kbd) {
+    padding-block: 0.25ex;
+    padding-inline: 0.5ch;
+  }
+  
+  :where(figure, pre) {
+    padding-block-start: calc(
+      var(--stack) / 2.5
+    ); /* Line up top of images/codeblocks with text in an adjacent column layout. */
+  }
+  
+  :where(pre) {
+    padding-block-end: calc(var(--stack) / 2.5);
+  }
+  
+  :where(pre code) {
+    padding-block: var(--stack);
+    padding-inline: var(--gutter);
+  }
+  
+  details[open] summary + * {
+    margin-block-start: calc(var(--stack) / 4);
+  }
 }
 
-@layer utility {
-	.flow > * + * {
-		margin-block-start: var(--space-m);
-	}
+@layer general {
+  *,
+  *::before,
+  *::after {
+    font-feature-settings: "kern";
+    font-kerning: normal;
+    -moz-osx-font-smoothing: grayscale !important;
+    -webkit-font-smoothing: antialiased !important;
+    box-sizing: border-box;
+  }
 
-	.grid-full { grid-column: full; }
-	.grid-popout { grid-column: popout; }
+  *:focus-visible {
+    outline: calc(var(--border-width) * 2) var(--border-style) var(--color-text);
+    outline-offset: var(--border-width);
+  }
+
+  :where(input, textarea, select, fieldset, button, kbd, dd, table, th, td) {
+    /* Unify border styles. */
+    border: var(--border-width) solid var(--color-text);
+  }
+
+  :where(input, textarea, select, fieldset, button, kbd) {
+    /* Unify interactive elements border radius. */
+    border-radius: var(--border-radius);
+  }
+
+  :where(pre) {
+    white-space: -moz-pre-wrap;
+    white-space: -o-pre-wrap;
+    white-space: pre-wrap;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: break-word;
+  }
+
+  :where(dl) {
+    display: grid;
+    grid-template-columns: auto minmax(75%, 1fr);
+    gap: calc(var(--gutter) / 2);
+    align-items: baseline;
+  }
+
+  :where(dt) {
+    border-block-end: var(--border-width) dotted;
+  }
+
+  :where(dd) {
+    block-size: 100%;
+    margin-inline-start: 0;
+  }
+
+  :where(input:not([type="checkbox"]):not([type="radio"]), select, textarea) {
+    display: block;
+    inline-size: 100%;
+  }
+
+  :where(input[type="radio"], input[type="checkbox"]) {
+    inline-size: 1.5ex;
+    block-size: 1.5ex;
+    vertical-align: baseline;
+  }
+
+  :where(input[type="file"]) {
+    padding-inline: 0;
+    border: 0;
+  }
+
+  ::-webkit-file-upload-button {
+    appearance: button;
+    cursor: pointer;
+    font: inherit;
+  }
+
+  :where(input, textarea, select) ~ * {
+    margin-block-start: 0;
+    font-size: 0.8em;
+  }
+
+  :where(input:required + mark) {
+    display: none;
+    color: var(--color-text);
+    background-color: transparent;
+  }
+
+  :where(input:required:invalid + mark) {
+    display: block;
+  }
+
+  :where(hr) {
+    block-size: 0;
+    border: 0;
+    border-block-start: var(--border-width) var(--border-style) var(--color-text);
+  }
+
+  :where(img) {
+    max-inline-size: 100%;
+    block-size: auto;
+  }
+
+  :where(figure, figure table) {
+    inline-size: 100%;
+  }
+
+  :where(figure) {
+    overflow-x: auto;
+  }
+
+  :where(figure > img) {
+    display: block;
+  }
+
+  :where(table) {
+    caption-side: bottom;
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
+  :where(tr > *:first-child) {
+    white-space: nowrap;
+  }
+
+  :where(summary > *) {
+    display: inline;
+    vertical-align: middle;
+  }
+
+  /* Skip link */
+  body > a:first-child {
+    position: fixed;
+    top: var(--stack);
+    left: var(--gutter);
+    inline-size: auto;
+    padding: 2px;
+    text-align: center;
+    background-color: var(--color-bg);
+  }
+
+  body > a:first-child:not(:focus) {
+    opacity: 0;
+    pointer-events: none;
+  }
 }

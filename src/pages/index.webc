@@ -417,41 +417,49 @@ layout: base.njk
 		<hr>
 		<h2 id="components">Components</h2>
 		<p>Components are stylized custom elements.</p>
+    <h3>Grid</h3>
+    <p>A Grid places content blocks into evenly distributed columns.</p>
 		<details>
-			<summary><strong>Grid</strong></summary>
-			<div data-layout="grid">
+			<summary>Grid Demo</summary>
+			<sm-grid>
 				<img src="https://via.placeholder.com/450x300" alt="Placeholder" width=450 height=300>
 				<img src="https://via.placeholder.com/450x300" alt="Placeholder" width=450 height=300>
 				<img src="https://via.placeholder.com/450x300" alt="Placeholder" width=450 height=300>
 				<img src="https://via.placeholder.com/450x300" alt="Placeholder" width=450 height=300>
 				<img src="https://via.placeholder.com/450x300" alt="Placeholder" width=450 height=300>
 				<img src="https://via.placeholder.com/450x300" alt="Placeholder" width=450 height=300>
-			</div>
+      </sm-grid>
 		</details>
+    <details open>
+      <summary>Grid Code</summary>
+      <pre><code>&lt;sm-grid&gt;
+&nbsp;&nbsp;&lt;img src="https://via.placeholder.com/450x300" alt="Placeholder" width=450 height=300&gt;
+&nbsp;&nbsp;&lt;img src="https://via.placeholder.com/450x300" alt="Placeholder" width=450 height=300&gt;
+&nbsp;&nbsp;&lt;img src="https://via.placeholder.com/450x300" alt="Placeholder" width=450 height=300&gt;
+&nbsp;&nbsp;&lt;img src="https://via.placeholder.com/450x300" alt="Placeholder" width=450 height=300&gt;
+&nbsp;&nbsp;&lt;img src="https://via.placeholder.com/450x300" alt="Placeholder" width=450 height=300&gt;
+&nbsp;&nbsp;&lt;img src="https://via.placeholder.com/450x300" alt="Placeholder" width=450 height=300&gt;
+&lt;/sm-grid&gt;</code></pre>
 		<h3>Flag</h3>
     <p>A Flag is composed of a signifier (image, icon, etc.) and content.</p>
     <details>
       <summary>Flag Demo</summary>
       <sm-flag>
         <img slot="signifier" src="https://via.placeholder.com/250x250" alt="Placeholder" width=250 height=250>
-        <div>
-          <h4>Flag Heading</h4>
-          <p>Flag paragraph. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae cupiditate, praesentium ducimus necessitatibus tenetur molestias est fuga consequuntur maiores.</p>
-        </div>
+        <h2 role="presentation">Flag Heading</h2>
+        <p>Flag paragraph. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae cupiditate, praesentium ducimus necessitatibus tenetur molestias est fuga consequuntur maiores.</p>
       </sm-flag>
     </details>
     <details open>
       <summary>Flag Code</summary>
       <pre><code>&lt;sm-flag&gt;
 &nbsp;&nbsp;&lt;img slot="signifier" src="https://via.placeholder.com/250x250" alt="Placeholder" width=250 height=250&gt;
-&nbsp;&nbsp;&lt;div&gt;
-&nbsp;&nbsp;&nbsp;&nbsp;&lt;h4&gt;Flag Heading&lt;/h4&gt;
-&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Flag paragraph. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae cupiditate, praesentium ducimus necessitatibus tenetur molestias est fuga consequuntur maiores.&lt;/p&gt;
-&nbsp;&nbsp;&lt;/div&gt;
+&nbsp;&nbsp;&lt;h2&gt;Flag Heading&lt;/h2&gt;
+&nbsp;&nbsp;&lt;p&gt;Flag paragraph. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae cupiditate, praesentium ducimus necessitatibus tenetur molestias est fuga consequuntur maiores.&lt;/p&gt;
 &lt;/sm-flag&gt;</code></pre>
     </details>
 		<h3>Page</h3>
-    <p>The current page is a single column page layout with header and footer. Header and footer are pushed against the top and bottom of the page respectively, regardless of how tall the main content is. Page content has a max width of 75 characters, which is the optimal line length.</p>
+    <p>Page is a single column page layout with header and footer (exhibit A: current page). Header and footer are pushed against the top and bottom of the page respectively, regardless of how tall the main content is. Page content has a max width of 75 characters, which is the optimal line length.</p>
     <details open>
       <summary>Page Code</summary>
       <pre><code>&lt;sm-page&gt;

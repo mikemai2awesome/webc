@@ -50,6 +50,7 @@
   }
 
   :host > header a {
+    font-weight: var(--font-weight-bold);
     text-decoration: none;
   }
 

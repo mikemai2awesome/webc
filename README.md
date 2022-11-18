@@ -1,13 +1,11 @@
-# Vinyl YOLO
+# SuperMinimalDS
 
-An exercise in building a website with [Eleventy](https://11ty.dev/), [WebC](https://github.com/11ty/webc), and [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components) for [Some Antics](https://someantics.dev/).
-
-View the final version at [yolo-vinyl.netlify.app](https://yolo-vinyl.netlify.app/).
+An exercise in building a minimalist design system with [Eleventy](https://11ty.dev/), [WebC](https://github.com/11ty/webc), and [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components).
 
 ## Goals
 
-1. Create a hero component for the site as a single-file component (SFC)
-2. Create a card web component that is progressively enhanced with some decoration and metadata
+1. Create a layout component for the site as a single-file component (SFC)
+2. Then try to create more components
 
 ## Getting Started
 

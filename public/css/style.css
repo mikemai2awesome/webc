@@ -45,17 +45,31 @@
     background-color: var(--color-text);
   }
 
+  @media (prefers-contrast: more) {
+    :root {
+      --color-text: black;
+      --color-bg: white;
+    }
+  }
+
   @media (prefers-color-scheme: dark) {
     :root {
-      --font-weight-regular: 300; /* Knock out text appears bolder, reduce weight to make body text more legible. */
+      --font-weight-regular: 300; /* Knockout text appears bolder, reduce weight to make body text more legible. */
       --tracking: 0;
       --color-text: #f4f4f4;
-      --color-bg: #101010;
+      --color-bg: #202020;
       color-scheme: dark;
     }
   
     :where(input[type="checkbox"], input[type="radio"]) {
       accent-color: var(--color-bg);
+    }
+  }
+
+  @media (prefers-color-scheme: dark) and (prefers-contrast: more) {
+    :root {
+      --color-text: white;
+      --color-bg: black;
     }
   }
 }

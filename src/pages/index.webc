@@ -3,8 +3,8 @@ title: SuperMinimalDS
 description: Minimalist black and white design system.
 layout: base.njk
 ---
-<sm-page>
-	<header>
+<sm-page layout="classic">
+	<header slot="header">
 		<h1>Super&shy;Minimal&shy;DS</h1>
 		<nav>
 			<ul>
@@ -440,7 +440,8 @@ layout: base.njk
 &nbsp;&nbsp;&lt;img src="https://via.placeholder.com/450x300" alt="Placeholder" width=450 height=300&gt;
 &nbsp;&nbsp;&lt;img src="https://via.placeholder.com/450x300" alt="Placeholder" width=450 height=300&gt;
 &lt;/sm-grid&gt;</code></pre>
-		<h3>Flag</h3>
+    </details>
+    <h3>Flag</h3>
     <p>A Flag is composed of a signifier (image, icon, etc.) and content.</p>
     <details>
       <summary>Flag Demo</summary>
@@ -475,7 +476,7 @@ layout: base.njk
 &lt;/sm-page&gt;</code></pre>
     </details>    
   </main>
-	<footer>
+	<footer slot="footer">
 		<p>
 			<small>&copy; Nobody. Just use this as you like. Created by <a href="https://mikemai.net">Mike Mai</a>.</small>
 		</p>

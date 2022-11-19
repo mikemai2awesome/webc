@@ -1,9 +1,11 @@
 <div webc:root>
+  <slot name="header"></slot>
   <slot></slot>
+  <slot name="footer"></slot>
 </div>
 
 <style webc:scoped>
-  :host {
+  :host[layout="classic"] {
     display: grid;
     grid-template-rows: auto 1fr auto;
     margin: 0;
@@ -11,17 +13,17 @@
     min-block-size: 100dvb;
   }
 
-  :host > * {
+  :host[layout="classic"] > * {
     inline-size: 100vw;
     margin: 0;
   }
 
-  :host main {
+  :host[layout="classic"] main {
     padding-block: clamp(var(--stack) * 1, 10vmax, var(--stack) * 2);
     padding-inline: var(--page-padding-inline);
   }
 
-  :host > :is(header, footer) {
+  :host[layout="classic"] > :is(header, footer) {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -30,35 +32,35 @@
     row-gap: calc(var(--stack) / 2);
   }
 
-  :host > :is(header, footer > *:only-child) {
+  :host[layout="classic"] > :is(header, footer > *:only-child) {
     margin-block: 0;
     margin-inline: auto;
   }
 
-  :host > footer {
+  :host[layout="classic"] > footer {
     padding-block: clamp(var(--stack) * 1, 10vmax, var(--stack) * 2)
       clamp(var(--stack) * 2, 10vmax, var(--stack) * 6);
     padding-inline: var(--page-padding-inline);
     border-block-start: var(--border-width) var(--border-style);
   }
 
-  :host > header {
+  :host[layout="classic"] > header {
     padding-block: clamp(var(--stack) * 2, 10vmax, var(--stack) * 6)
       clamp(var(--stack) * 1, 10vmax, var(--stack) * 2);
     padding-inline: var(--page-padding-inline);
     border-block-end: var(--border-width) var(--border-style);
   }
 
-  :host > header a {
+  :host[layout="classic"] > header a {
     font-weight: var(--font-weight-bold);
     text-decoration: none;
   }
 
-  :host > header a:hover {
+  :host[layout="classic"] > header a:hover {
     text-decoration: underline;
   }
 
-  :host > header :is(h1 a, > h1, > a) {
+  :host[layout="classic"] > header :is(h1 a, > h1, > a) {
     display: block;
     font-size: clamp(2.25rem, 2.125rem + 0.5vw, 2.75rem);
     font-weight: var(--font-weight-bold);
@@ -66,7 +68,7 @@
     letter-spacing: 0.02em;
   }
 
-  :host > header > nav ul {
+  :host[layout="classic"] > header > nav ul {
     display: flex;
     flex-wrap: wrap;
     align-items: baseline;

@@ -1,9 +1,9 @@
-<article webc:root webc:keep>
+<div webc:root>
   <slot name="signifier"></slot>
   <div>
     <slot></slot>
   </div>
-</article>
+</div>
 
 <style webc:scoped>
   :host {

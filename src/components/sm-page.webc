@@ -1,4 +1,4 @@
-<div webc:root webc:keep>
+<div webc:root>
   <slot></slot>
 </div>
 

@@ -16,10 +16,10 @@
     --gutter: clamp(1ch, 2.5vmax, 3ch);
     --stack: clamp(1.25ex, 1ex + 2.5vmax, 1.75ex);
     --line-length: 75ch;
-    --page-padding-inline: calc((100vw - min(var(--line-length), 80vw)) / 2);
+    --page-padding-inline: calc((100vw - min(var(--line-length), 90vw)) / 2);
     --border-width: 1px;
-    --border-style: dashed;
-    --border-radius: 4px;
+    --border-style: solid;
+    --border-radius: 1em;
   }
 }
 
@@ -43,6 +43,14 @@
   :where(button, code) {
     color: var(--color-bg);
     background-color: var(--color-text);
+  }
+
+  :where(table) {
+    background-color: var(--color-text);
+  }
+
+  :where(th, td) {
+    background-color: var(--color-bg);
   }
 
   @media (prefers-contrast: more) {
@@ -144,7 +152,7 @@
     transform: translateX(-100%);
   }
   
-  :where(strong, b, th, button) {
+  :where(strong, b, kbd, th, button) {
     font-weight: var(
       --font-weight-semibold
     ); /* Make non-heading emphasized text less bold than heading text. */
@@ -202,12 +210,12 @@
     margin-block-start: calc(var(--stack) * 1.75);
   }
   
-  :where(p, figure, form, fieldset, pre, blockquote, ul, ol, dl, details) {
+  :where(p, figure, form, fieldset, pre, blockquote, ul, ol, dl, details, [is-stack]) {
     margin-inline: 0;
     margin-block-start: var(--stack);
   }
   
-  :where(h1, h2, h3, h4, h5, h6, p, figure, form, fieldset, pre, blockquote, ul, ol, dl, details):first-child,
+  :where(h1, h2, h3, h4, h5, h6, p, figure, form, fieldset, pre, blockquote, ul, ol, dl, details, [is-stack]):first-child,
   :where(legend + *) {
     margin-block-start: 0;
   }
@@ -265,10 +273,15 @@
     padding-block-end: calc(var(--stack) / 2);
   }
   
-  :where(button, dd, th, td) {
+  :where(button, dd, th, td, code, kbd) {
     /* Unify inset spacing on bordered elements. */
     padding-block: calc(var(--stack) / 6);
     padding-inline: calc(var(--gutter) / 3);
+  }
+  
+  :where(kbd) {
+    padding-block: calc(var(--stack) / 6);
+    padding-inline: calc(var(--gutter) / 6);
   }
   
   :where(input, textarea) {
@@ -279,12 +292,7 @@
     padding-block: calc(var(--stack) / 2);
   }
   
-  :where(code, kbd) {
-    padding-block: 0.25ex;
-    padding-inline: 0.5ch;
-  }
-  
-  :where(figure, pre) {
+  :where(figure, pre, [is-box]) {
     padding-block-start: calc(
       var(--stack) / 2.5
     ); /* Line up top of images/codeblocks with text in an adjacent column layout. */
@@ -324,14 +332,34 @@
     outline-offset: var(--border-width);
   }
 
-  :where(input, textarea, select, fieldset, button, kbd, dd, table, th, td) {
+  :where(input, textarea, select, fieldset, button, kbd, dd) {
     /* Unify border styles. */
-    border: var(--border-width) solid var(--color-text);
+    border: var(--border-width) solid;
   }
 
-  :where(input, textarea, select, fieldset, button, kbd) {
+  :where(input, textarea, select, fieldset, button, img, code, dd, table) {
     /* Unify interactive elements border radius. */
     border-radius: var(--border-radius);
+  }
+
+  :where(table > *:first-child tr:first-child > *:first-child, table > caption + * tr:first-child > *:first-child) {
+    border-top-left-radius: var(--border-radius);
+  }
+
+  :where(table > *:first-child tr:first-child > *:last-child, table > caption + * tr:first-child > *:last-child) {
+    border-top-right-radius: var(--border-radius);
+  }
+
+  :where(table > *:last-child tr:last-child > *:first-child) {
+    border-bottom-left-radius: var(--border-radius);
+  }
+
+  :where(table > *:last-child tr:last-child > *:last-child) {
+    border-bottom-right-radius: var(--border-radius);
+  }
+
+  :where(kbd) {
+    border-radius: 0.3em;
   }
 
   :where(pre) {
@@ -407,11 +435,15 @@
     block-size: auto;
   }
 
-  :where(figure, figure table) {
-    inline-size: 100%;
-  }
-
   :where(figure) {
+    position: relative;
+    right: 50%;
+    left: 50%;
+    inline-size: 100%;
+    inline-size: 100vw;
+    margin-inline-start: -50vw;
+    margin-inline-end: -50vw;
+    padding-inline: var(--page-padding-inline);
     overflow-x: auto;
   }
 
@@ -421,8 +453,7 @@
 
   :where(table) {
     caption-side: bottom;
-    border-collapse: collapse;
-    border-spacing: 0;
+    border-spacing: var(--border-width);
   }
 
   :where(tr > *:first-child) {

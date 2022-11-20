@@ -19,54 +19,54 @@ layout: base.njk
 		<p><big><span @html="{{ title }}"></span> is <strong>black &amp; white</strong> CSS awesomeness with nice typography (for both English and Chinese). <q>Less is more</q> is the main principle of this mini design system.</big></p>
 		<figure>
 			<table>
+        <caption><span @html="{{ title }}"></span>&rsquo;s design guidelines.</caption>
 				<tbody>
 					<tr>
-						<th width=1 aria-label="No">&#10005;</th>
-						<td>Colors</td>
+						<th aria-label="No">&#10005;</th>
+						<td width=100%>Colors</td>
 					</tr>
 					<tr>
-						<th width=1 aria-label="No">&#10005;</th>
-						<td>Classes</td>
+						<th aria-label="No">&#10005;</th>
+						<td width=100%>Classes</td>
 					</tr>
 					<tr>
-						<th width=1 aria-label="No">&#10005;</th>
-						<td>Gradients</td>
+						<th aria-label="No">&#10005;</th>
+						<td width=100%>Gradients</td>
 					</tr>
 					<tr>
-						<th width=1 aria-label="No">&#10005;</th>
-						<td>Animations</td>
+						<th aria-label="No">&#10005;</th>
+						<td width=100%>Animations</td>
 					</tr>
 					<tr>
-						<th width=1 aria-label="No">&#10005;</th>
-						<td>Breakpoints</td>
+						<th aria-label="No">&#10005;</th>
+						<td width=100%>Breakpoints</td>
 					</tr>
 					<tr>
-						<th width=1 aria-label="No">&#10005;</th>
-						<td>Custom fonts</td>
+						<th aria-label="No">&#10005;</th>
+						<td width=100%>Custom fonts</td>
 					</tr>
 					<tr>
-						<th width=1 aria-label="Yes">&check;</th>
-						<td>Auto dark mode</td>
+						<th aria-label="Yes">&check;</th>
+						<td width=100%>Auto dark mode</td>
 					</tr>
 					<tr>
-						<th width=1 aria-label="Yes">&check;</th>
-						<td>Hover &amp; focus styles</td>
+						<th aria-label="Yes">&check;</th>
+						<td width=100%>Hover &amp; focus styles</td>
 					</tr>
 					<tr>
-						<th width=1 aria-label="Yes">&check;</th>
-						<td>Fluid typography &amp; spacing</td>
+						<th aria-label="Yes">&check;</th>
+						<td width=100%>Fluid typography &amp; spacing</td>
 					</tr>
 					<tr>
-						<th width=1 aria-label="Yes">&check;</th>
-						<td>Zoom &amp; font-size compatibility</td>
+						<th aria-label="Yes">&check;</th>
+						<td width=100%>Zoom &amp; font-size compatibility</td>
 					</tr>
 					<tr>
-						<th width=1 aria-label="Yes">&check;</th>
-						<td>Under 10KB minified file size</td>
+						<th aria-label="Yes">&check;</th>
+						<td width=100%>Under 10KB minified file size</td>
 					</tr>
 				</tbody>
 			</table>
-			<figcaption><span @html="{{ title }}"></span>&rsquo;s design guidelines.</figcaption>
 		</figure>
     <hr>
     <h2 id="foundations">Foundations</h2>
@@ -125,7 +125,7 @@ layout: base.njk
 					</tr>
 					<tr>
 						<td>--page-padding-inline</td>
-						<td>Scale from 10vw to whatever is available after subtracting the optimal line length of 75ch from 100% viewpoint width</td>
+						<td>Scale from 5vw to whatever is available after subtracting the optimal line length of 75ch from 100% viewpoint width</td>
 						<td>The inline inset spacing of a single-column page layout.</td>
 					</tr>
 				</tbody>
@@ -271,6 +271,7 @@ layout: base.njk
 			<summary><strong>Table</strong></summary>
 			<figure>
 				<table>
+					<caption>Table caption.</caption>
 					<thead>
 						<tr>
 							<td></td>
@@ -313,7 +314,6 @@ layout: base.njk
 							<td>Footer cell</td>
 						</tr>
 					</tfoot>
-					<caption>Table caption.</caption>
 				</table>
 			</figure>
 		</details>
@@ -419,9 +419,11 @@ layout: base.njk
 		<p>Components are stylized custom elements.</p>
     <h3>Grid</h3>
     <p>A Grid places content blocks into evenly distributed columns.</p>
-		<details>
-			<summary>Grid Demo</summary>
-			<sm-grid>
+		<details open>
+			<summary>
+        <p>Grid Demo</p>
+      </summary>
+			<sm-grid is-box>
 				<img src="https://via.placeholder.com/450x300" alt="Placeholder" width=450 height=300>
 				<img src="https://via.placeholder.com/450x300" alt="Placeholder" width=450 height=300>
 				<img src="https://via.placeholder.com/450x300" alt="Placeholder" width=450 height=300>
@@ -431,20 +433,24 @@ layout: base.njk
       </sm-grid>
 		</details>
     <details open>
-      <summary>Grid Code</summary>
+      <summary>
+        <p>Grid Code</p>
+      </summary>
       <pre><code>&lt;sm-grid&gt;
-&nbsp;&nbsp;&lt;img src="https://via.placeholder.com/450x300" alt="Placeholder" width=450 height=300&gt;
-&nbsp;&nbsp;&lt;img src="https://via.placeholder.com/450x300" alt="Placeholder" width=450 height=300&gt;
-&nbsp;&nbsp;&lt;img src="https://via.placeholder.com/450x300" alt="Placeholder" width=450 height=300&gt;
-&nbsp;&nbsp;&lt;img src="https://via.placeholder.com/450x300" alt="Placeholder" width=450 height=300&gt;
-&nbsp;&nbsp;&lt;img src="https://via.placeholder.com/450x300" alt="Placeholder" width=450 height=300&gt;
-&nbsp;&nbsp;&lt;img src="https://via.placeholder.com/450x300" alt="Placeholder" width=450 height=300&gt;
+&nbsp;&nbsp;&lt;img src="image.jpg" alt="Placeholder" width=450 height=300&gt;
+&nbsp;&nbsp;&lt;img src="image.jpg" alt="Placeholder" width=450 height=300&gt;
+&nbsp;&nbsp;&lt;img src="image.jpg" alt="Placeholder" width=450 height=300&gt;
+&nbsp;&nbsp;&lt;img src="image.jpg" alt="Placeholder" width=450 height=300&gt;
+&nbsp;&nbsp;&lt;img src="image.jpg" alt="Placeholder" width=450 height=300&gt;
+&nbsp;&nbsp;&lt;img src="image.jpg" alt="Placeholder" width=450 height=300&gt;
 &lt;/sm-grid&gt;</code></pre>
     </details>
     <h3>Flag</h3>
     <p>A Flag is composed of a signifier (image, icon, etc.) and content.</p>
-    <details>
-      <summary>Flag Demo</summary>
+    <details open>
+      <summary>
+        <p>Flag Demo</p>
+      </summary>
       <sm-flag>
         <img slot="signifier" src="https://via.placeholder.com/250x250" alt="Placeholder" width=250 height=250>
         <h2 role="presentation">Flag Heading</h2>
@@ -452,25 +458,29 @@ layout: base.njk
       </sm-flag>
     </details>
     <details open>
-      <summary>Flag Code</summary>
+      <summary>
+        <p>Flag Code</p>
+      </summary>
       <pre><code>&lt;sm-flag&gt;
-&nbsp;&nbsp;&lt;img slot="signifier" src="https://via.placeholder.com/250x250" alt="Placeholder" width=250 height=250&gt;
+&nbsp;&nbsp;&lt;img slot="signifier" src="image.jpg" alt="Placeholder" width=250 height=250&gt;
 &nbsp;&nbsp;&lt;h2&gt;Flag Heading&lt;/h2&gt;
 &nbsp;&nbsp;&lt;p&gt;Flag paragraph. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae cupiditate, praesentium ducimus necessitatibus tenetur molestias est fuga consequuntur maiores.&lt;/p&gt;
 &lt;/sm-flag&gt;</code></pre>
     </details>
 		<h3>Page</h3>
-    <p>Page is a single column page layout with header and footer (exhibit A: current page). Header and footer are pushed against the top and bottom of the page respectively, regardless of how tall the main content is. Page content has a max width of 75 characters, which is the optimal line length.</p>
+    <p>A Page can take on many different layouts. The classic layout is a single column page layout with header and footer (exhibit A: current page). Header and footer are pushed against the top and bottom of the page respectively, regardless of how tall the main content is. Page content has a max width of 75 characters, which is the optimal line length.</p>
     <details open>
-      <summary>Page Code</summary>
-      <pre><code>&lt;sm-page&gt;
-&nbsp;&nbsp;&lt;header&gt;
+      <summary>
+        <p>Page Code</p>
+      </summary>
+      <pre><code>&lt;sm-page layout="classic"&gt;
+&nbsp;&nbsp;&lt;header slot="header"&gt;
 &nbsp;&nbsp;&nbsp;&nbsp;Header
 &nbsp;&nbsp;&lt;/header&gt;
 &nbsp;&nbsp;&lt;main&gt;
 &nbsp;&nbsp;&nbsp;&nbsp;Main content
 &nbsp;&nbsp;&lt;/main&gt;
-&nbsp;&nbsp;&lt;footer&gt;
+&nbsp;&nbsp;&lt;footer slot="footer"&gt;
 &nbsp;&nbsp;&nbsp;&nbsp;Footer
 &nbsp;&nbsp;&lt;/footer&gt;
 &lt;/sm-page&gt;</code></pre>

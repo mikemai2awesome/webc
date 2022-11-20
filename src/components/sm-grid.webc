@@ -1,20 +1,15 @@
-<div webc:root>
+<div webc:root is-stack>
   <slot></slot>
 </div>
 
-<style webc:scoped>
-  :host {
+<style>
+  sm-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(20ch, 1fr));
     gap: var(--gutter);
-    margin-block-start: var(--stack);
   }
 
-  :host:first-child {
-    margin-block-start: 0;
-  }
-
-  :host > * {
+  sm-grid > * {
     margin: 0;
   }
 </style>

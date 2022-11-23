@@ -1,69 +1,70 @@
 ---
-title: SuperMinimalDS
+title: Super Minimal Design System
 description: Minimalist black and white design system.
 layout: base.njk
 ---
-<sm-page layout="classic">
-	<header slot="header">
-		<h1>Super&shy;Minimal&shy;DS</h1>
-		<nav>
-			<ul>
-				<li><a href="#foundations">Foundations</a></li>
-				<li><a href="#elements">Elements</a></li>
-				<li><a href="#components">Components</a></li>
-			</ul>
-		</nav>
-	</header>
+<sm-page layout="profile">
+  <img slot="cover" src="https://images.unsplash.com/photo-1616738655992-e3cbcf59b0a9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3431&q=80" alt="" width=1719 height=968>
+  <img slot="avatar" src="https://images.unsplash.com/photo-1600818797017-d6e5027210bb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2370&q=80" alt="" width=1452 height=968>
+  <h1 slot="title" @html="{{ title + ' (Beta)' }}"></h1>
+  <p slot="subtitle">@SuperMinimalDS</p>
+  <nav slot="nav">
+    <ul>
+      <li><a href="#foundations">Foundations</a></li>
+      <li><a href="#elements">Elements</a></li>
+      <li><a href="#components">Components</a></li>
+    </ul>
+  </nav>
   <main id="main-content">
     <h2>About</h2>
-		<p><big><span @html="{{ title }}"></span> is <strong>black &amp; white</strong> CSS awesomeness with nice typography (for both English and Chinese). <q>Less is more</q> is the main principle of this mini design system.</big></p>
+		<p><big><span @html="{{ title }}"></span> is a design system built on <strong>black &amp; white</strong> CSS awesomeness with nice typography (for both English and Chinese). <q>Less is more</q> is the main principle of this mini design system.</big></p>
 		<figure>
 			<table>
         <caption><span @html="{{ title }}"></span>&rsquo;s design guidelines.</caption>
 				<tbody>
 					<tr>
-						<th aria-label="No">&#10005;</th>
-						<td width=100%>Colors</td>
+						<th aria-hidden="true">&#10005;</th>
+						<td width=100% aria-label="The system does not use">Colors</td>
 					</tr>
 					<tr>
-						<th aria-label="No">&#10005;</th>
-						<td width=100%>Classes</td>
+						<th aria-hidden="true">&#10005;</th>
+						<td width=100% aria-label="The system does not use">Classes</td>
 					</tr>
 					<tr>
-						<th aria-label="No">&#10005;</th>
-						<td width=100%>Gradients</td>
+						<th aria-hidden="true">&#10005;</th>
+						<td width=100% aria-label="The system does not use">Gradients</td>
 					</tr>
 					<tr>
-						<th aria-label="No">&#10005;</th>
-						<td width=100%>Animations</td>
+						<th aria-hidden="true">&#10005;</th>
+						<td width=100% aria-label="The system does not use">Animations</td>
 					</tr>
 					<tr>
-						<th aria-label="No">&#10005;</th>
-						<td width=100%>Breakpoints</td>
+						<th aria-hidden="true">&#10005;</th>
+						<td width=100% aria-label="The system does not use">Breakpoints</td>
 					</tr>
 					<tr>
-						<th aria-label="No">&#10005;</th>
-						<td width=100%>Custom fonts</td>
+						<th aria-hidden="true">&#10005;</th>
+						<td width=100% aria-label="The system does not use">Custom fonts</td>
 					</tr>
 					<tr>
-						<th aria-label="Yes">&check;</th>
-						<td width=100%>Auto dark mode</td>
+						<th aria-hidden="true">&check;</th>
+						<td width=100% aria-label="The system does provide">Auto dark mode</td>
 					</tr>
 					<tr>
-						<th aria-label="Yes">&check;</th>
-						<td width=100%>Hover &amp; focus styles</td>
+						<th aria-hidden="true">&check;</th>
+						<td width=100% aria-label="The system does provide">Hover &amp; focus styles</td>
 					</tr>
 					<tr>
-						<th aria-label="Yes">&check;</th>
-						<td width=100%>Fluid typography &amp; spacing</td>
+						<th aria-hidden="true">&check;</th>
+						<td width=100% aria-label="The system does provide">Fluid typography &amp; spacing</td>
 					</tr>
 					<tr>
-						<th aria-label="Yes">&check;</th>
-						<td width=100%>Zoom &amp; font-size compatibility</td>
+						<th aria-hidden="true">&check;</th>
+						<td width=100% aria-label="The system is">Under 15KB minified file size</td>
 					</tr>
 					<tr>
-						<th aria-label="Yes">&check;</th>
-						<td width=100%>Under 10KB minified file size</td>
+						<th aria-hidden="true">&check;</th>
+						<td width=100% aria-label="The system has">Browser zoom &amp; font-size compatibility</td>
 					</tr>
 				</tbody>
 			</table>
@@ -326,6 +327,7 @@ layout: base.njk
 						<li>
 							<label for="select">Select</label>
 							<select name="select" id="select">
+                <option value="" disabled selected>Select an option 👇</option>
 								<option value="Option 1">Option 1</option>
 								<option value="Option 2">Option 2</option>
 							</select>
@@ -418,18 +420,17 @@ layout: base.njk
 		<h2 id="components">Components</h2>
 		<p>Components are stylized custom elements.</p>
     <h3>Grid</h3>
-    <p>A Grid places content blocks into evenly distributed columns.</p>
+    <p>A Grid places content blocks into evenly distributed columns and aligns them.</p>
 		<details open>
 			<summary>
         <p>Grid Demo</p>
       </summary>
 			<sm-grid is-box>
-				<img src="https://via.placeholder.com/450x300" alt="Placeholder" width=450 height=300>
-				<img src="https://via.placeholder.com/450x300" alt="Placeholder" width=450 height=300>
-				<img src="https://via.placeholder.com/450x300" alt="Placeholder" width=450 height=300>
-				<img src="https://via.placeholder.com/450x300" alt="Placeholder" width=450 height=300>
-				<img src="https://via.placeholder.com/450x300" alt="Placeholder" width=450 height=300>
-				<img src="https://via.placeholder.com/450x300" alt="Placeholder" width=450 height=300>
+				<img src="https://via.placeholder.com/900x600" alt="Placeholder" width=900 height=600>
+				<img src="https://via.placeholder.com/900x600" alt="Placeholder" width=900 height=600>
+				<img src="https://via.placeholder.com/900x600" alt="Placeholder" width=900 height=600>
+				<img src="https://via.placeholder.com/900x600" alt="Placeholder" width=900 height=600>
+				<img src="https://via.placeholder.com/900x600" alt="Placeholder" width=900 height=600>
       </sm-grid>
 		</details>
     <details open>
@@ -437,13 +438,62 @@ layout: base.njk
         <p>Grid Code</p>
       </summary>
       <pre><code>&lt;sm-grid&gt;
-&nbsp;&nbsp;&lt;img src="image.jpg" alt="Placeholder" width=450 height=300&gt;
-&nbsp;&nbsp;&lt;img src="image.jpg" alt="Placeholder" width=450 height=300&gt;
-&nbsp;&nbsp;&lt;img src="image.jpg" alt="Placeholder" width=450 height=300&gt;
-&nbsp;&nbsp;&lt;img src="image.jpg" alt="Placeholder" width=450 height=300&gt;
-&nbsp;&nbsp;&lt;img src="image.jpg" alt="Placeholder" width=450 height=300&gt;
-&nbsp;&nbsp;&lt;img src="image.jpg" alt="Placeholder" width=450 height=300&gt;
+&nbsp;&nbsp;&lt;img src="image.jpg" alt="Placeholder" width=900 height=600&gt;
+&nbsp;&nbsp;&lt;img src="image.jpg" alt="Placeholder" width=900 height=600&gt;
+&nbsp;&nbsp;&lt;img src="image.jpg" alt="Placeholder" width=900 height=600&gt;
+&nbsp;&nbsp;&lt;img src="image.jpg" alt="Placeholder" width=900 height=600&gt;
+&nbsp;&nbsp;&lt;img src="image.jpg" alt="Placeholder" width=900 height=600&gt;
+&nbsp;&nbsp;&lt;img src="image.jpg" alt="Placeholder" width=900 height=600&gt;
 &lt;/sm-grid&gt;</code></pre>
+    </details>
+    <h3>Flex</h3>
+    <p>A Flex places content blocks into evenly distributed columns and stretches them to fill up available space.</p>
+		<details open>
+			<summary>
+        <p>Flex Demo</p>
+      </summary>
+			<sm-flex is-box>
+				<sm-flex-item>
+          <img src="https://via.placeholder.com/900x600" alt="Placeholder" width=900 height=600>
+        </sm-flex-item>
+				<sm-flex-item>
+          <img src="https://via.placeholder.com/900x600" alt="Placeholder" width=900 height=600>
+        </sm-flex-item>
+				<sm-flex-item>
+          <img src="https://via.placeholder.com/900x600" alt="Placeholder" width=900 height=600>
+        </sm-flex-item>
+				<sm-flex-item>
+          <img src="https://via.placeholder.com/900x600" alt="Placeholder" width=900 height=600>
+        </sm-flex-item>
+				<sm-flex-item>
+          <img src="https://via.placeholder.com/900x600" alt="Placeholder" width=900 height=600>
+        </sm-flex-item>
+      </sm-flex>
+		</details>
+    <details open>
+      <summary>
+        <p>Flex Code</p>
+      </summary>
+      <pre><code>&lt;sm-flex&gt;
+&nbsp;&nbsp;&lt;sm-flex-item&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;img src="image.jpg" alt="Placeholder" width=900 height=600&gt;
+&nbsp;&nbsp;&lt;/sm-flex-item&gt;
+&nbsp;&nbsp;&lt;sm-flex-item&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;img src="image.jpg" alt="Placeholder" width=900 height=600&gt;
+&nbsp;&nbsp;&lt;/sm-flex-item&gt;
+&nbsp;&nbsp;&lt;sm-flex-item&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;img src="image.jpg" alt="Placeholder" width=900 height=600&gt;
+&nbsp;&nbsp;&lt;/sm-flex-item&gt;
+&nbsp;&nbsp;&lt;sm-flex-item&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;img src="image.jpg" alt="Placeholder" width=900 height=600&gt;
+&nbsp;&nbsp;&lt;/sm-flex-item&gt;
+&nbsp;&nbsp;&lt;sm-flex-item&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;img src="image.jpg" alt="Placeholder" width=900 height=600&gt;
+&nbsp;&nbsp;&lt;/sm-flex-item&gt;
+&nbsp;&nbsp;&lt;sm-flex-item&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;img src="image.jpg" alt="Placeholder" width=900 height=600&gt;
+&nbsp;&nbsp;&lt;/sm-flex-item&gt;
+&lt;/sm-flex&gt;</code></pre>
     </details>
     <h3>Flag</h3>
     <p>A Flag is composed of a signifier (image, icon, etc.) and content.</p>
@@ -468,15 +518,65 @@ layout: base.njk
 &lt;/sm-flag&gt;</code></pre>
     </details>
 		<h3>Page</h3>
-    <p>A Page can take on many different layouts. The classic layout is a single column page layout with header and footer (exhibit A: current page). Header and footer are pushed against the top and bottom of the page respectively, regardless of how tall the main content is. Page content has a max width of 75 characters, which is the optimal line length.</p>
+    <p>A Page defines the layout for the entire page. Each layout is made up of header, main content, and footer. Header and footer are pushed against the top and bottom of the page respectively, regardless of how tall the main content is. The content has a max width of 75 characters, which is the optimal line length.</p>
+    <figure>
+      <table>
+        <caption>Page layouts.</caption>
+        <thead>
+          <tr>
+            <th>Layout</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Classic</td>
+            <td>A single column page layout with a classic header that is composed of just heading and navigation.</td>
+          </tr>
+          <tr>
+            <td>Profile</td>
+            <td>A single column page layout with a profile header that features a cover image and an avatar image.</td>
+          </tr>
+        </tbody>
+      </table>
+    </figure>
     <details open>
       <summary>
         <p>Page Code</p>
       </summary>
-      <pre><code>&lt;sm-page layout="classic"&gt;
-&nbsp;&nbsp;&lt;header slot="header"&gt;
-&nbsp;&nbsp;&nbsp;&nbsp;Header
-&nbsp;&nbsp;&lt;/header&gt;
+      <pre><code>&lt;!-- Classic Page --&gt;
+&lt;sm-page layout="classic"&gt;
+&nbsp;&nbsp;&lt;h1 slot="title"&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;Title
+&nbsp;&nbsp;&lt;/h1&gt;
+&nbsp;&nbsp;&lt;nav slot="nav"&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;
+&nbsp;&nbsp;&lt;/nav&gt;
+&nbsp;&nbsp;&lt;main&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;Main content
+&nbsp;&nbsp;&lt;/main&gt;
+&nbsp;&nbsp;&lt;footer slot="footer"&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;Footer
+&nbsp;&nbsp;&lt;/footer&gt;
+&lt;/sm-page&gt;
+
+&lt;!-- Profile Page --&gt;
+&lt;sm-page layout="profile"&gt;
+&nbsp;&nbsp;&lt;img slot="cover" src="cover.jpg" alt="" width=1719 height=968&gt;
+&nbsp;&nbsp;&lt;img slot="avatar" src="avatar.jpg" alt="" width=500 height=500&gt;
+&nbsp;&nbsp;&lt;h1 slot="title"&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;Title
+&nbsp;&nbsp;&lt;/h1&gt;
+&nbsp;&nbsp;&lt;p slot="subtitle"&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;Subtitle
+&nbsp;&nbsp;&lt;/p&gt;
+&nbsp;&nbsp;&lt;nav slot="nav"&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;
+&nbsp;&nbsp;&lt;/nav&gt;
 &nbsp;&nbsp;&lt;main&gt;
 &nbsp;&nbsp;&nbsp;&nbsp;Main content
 &nbsp;&nbsp;&lt;/main&gt;
@@ -484,11 +584,11 @@ layout: base.njk
 &nbsp;&nbsp;&nbsp;&nbsp;Footer
 &nbsp;&nbsp;&lt;/footer&gt;
 &lt;/sm-page&gt;</code></pre>
-    </details>    
+    </details>
   </main>
 	<footer slot="footer">
 		<p>
-			<small>&copy; Nobody. Just use this as you like. Created by <a href="https://mikemai.net">Mike Mai</a>.</small>
+			<small>Built with 11ty and WebC by <a href="https://mikemai.net">Mike Mai</a>.</small>
 		</p>
 	</footer>
 </sm-page>

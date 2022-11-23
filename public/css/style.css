@@ -2,24 +2,24 @@
   :root {
     --color-text: #202020;
     --color-bg: #f4f4f4;
-    --font: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-      "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", sans-serif;
+    --font: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", sans-serif; /* Use system UI font. */
     --font-italic: "Georgia", serif;
     --font-code: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas,
       Liberation Mono, monospace;
-    --font-size: 100%;
+    --font-size: 100%; /* % ensures browser zoom is supported. */
     --font-weight-regular: 400;
     --font-weight-semibold: 700;
     --font-weight-bold: 900;
     --tracking: -0.006em;
-    --leading: 1.45;
+    --leading: 1.45; /* Standard leading for good legibility. */
     --gutter: clamp(1ch, 2.5vmax, 3ch);
     --stack: clamp(1.25ex, 1ex + 2.5vmax, 1.75ex);
     --line-length: 75ch;
+    --min-inline-size: 20ch;
     --page-padding-inline: calc((100vw - min(var(--line-length), 90vw)) / 2);
     --border-width: 1px;
     --border-style: solid;
-    --border-radius: 1em;
+    --border-radius: 0.5em;
   }
 }
 
@@ -32,7 +32,12 @@
   }
   
   :where(a) {
-    color: var(--color-text);
+    color: var(--color-primary, var(--color-text));
+  }
+
+  :where(button) {
+    color: var(--color-bg);
+    background-color: var(--color-primary, var(--color-text));
   }
   
   :where(input, textarea, select) {
@@ -40,13 +45,13 @@
     background-color: var(--color-bg);
   }
   
-  :where(button, code) {
+  :where(code) {
     color: var(--color-bg);
     background-color: var(--color-text);
   }
 
   :where(table) {
-    background-color: var(--color-text);
+    background-color: var(--color-text); /* This is acting as border color because there is spacing between cells. */
   }
 
   :where(th, td) {
@@ -88,10 +93,10 @@
       var(--font-size),
       var(--font-size) * 0.9 + 0.25vw,
       var(--font-size) * 2
-    ); /* % ensures browser zoom is supported. */
-    font-family: var(--font); /* Use system UI font. */
+    );
+    font-family: var(--font);
     font-weight: var(--font-weight-regular);
-    line-height: var(--leading); /* Standard leading for good legibility. */
+    line-height: var(--leading);
     letter-spacing: var(--tracking);
   }
   
@@ -273,19 +278,19 @@
     padding-block-end: calc(var(--stack) / 2);
   }
   
-  :where(button, dd, th, td, code, kbd) {
+  :where(button, dd, th, td, code, kbd, select, input:not([type="radio"], [type="checkbox"]), textarea) {
     /* Unify inset spacing on bordered elements. */
     padding-block: calc(var(--stack) / 6);
     padding-inline: calc(var(--gutter) / 3);
+  }
+
+  :where(button) {
+    padding-inline: var(--gutter); /* Give button more spacing. */
   }
   
   :where(kbd) {
     padding-block: calc(var(--stack) / 6);
     padding-inline: calc(var(--gutter) / 6);
-  }
-  
-  :where(input, textarea) {
-    padding-inline: 2px;
   }
   
   :where(caption, figcaption) {
@@ -312,7 +317,7 @@
   }
 }
 
-@layer general {
+@layer resets {
   body {
     margin: 0;
   }
@@ -328,18 +333,24 @@
   }
 
   *:focus-visible {
-    outline: calc(var(--border-width) * 2) var(--border-style) var(--color-text);
-    outline-offset: var(--border-width);
+    outline: calc(var(--border-width) * 2) var(--border-style) var(--color-primary, var(--color-text));
+    outline-offset: calc(var(--border-width) * 2);
+  }
+
+  *:disabled {
+    cursor: not-allowed;
+  }
+
+  *[readonly] {
+    border-style: dashed;
   }
 
   :where(input, textarea, select, fieldset, button, kbd, dd) {
-    /* Unify border styles. */
-    border: var(--border-width) solid;
+    border: var(--border-width) solid; /* Unify border styles. */
   }
 
   :where(input, textarea, select, fieldset, button, img, code, dd, table) {
-    /* Unify interactive elements border radius. */
-    border-radius: var(--border-radius);
+    border-radius: var(--border-radius); /* Unify interactive elements border radius. */
   }
 
   :where(table > *:first-child tr:first-child > *:first-child, table > caption + * tr:first-child > *:first-child) {
@@ -409,19 +420,10 @@
     font: inherit;
   }
 
-  :where(input, textarea, select) ~ * {
-    margin-block-start: 0;
-    font-size: 0.8em;
-  }
-
-  :where(input:required + mark) {
-    display: none;
-    color: var(--color-text);
-    background-color: transparent;
-  }
-
-  :where(input:required:invalid + mark) {
-    display: block;
+  :where(select) {
+    appearance: none;
+    text-indent: 0.01px;
+    text-overflow: '';
   }
 
   :where(hr) {
@@ -431,6 +433,7 @@
   }
 
   :where(img) {
+    display: block;
     max-inline-size: 100%;
     block-size: auto;
   }
@@ -463,6 +466,24 @@
   :where(summary > *) {
     display: inline;
     vertical-align: middle;
+  }
+}
+
+@layer additional-elements {
+  /* Validation text */
+  :where(input, textarea, select) ~ * {
+    margin-block-start: 0;
+    font-size: 0.8em;
+  }
+
+  :where(input:required + mark) {
+    display: none;
+    color: var(--color-text);
+    background-color: transparent;
+  }
+
+  :where(input:required:invalid + mark) {
+    display: block;
   }
 
   /* Skip link */

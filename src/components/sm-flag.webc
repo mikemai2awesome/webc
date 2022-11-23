@@ -7,10 +7,13 @@
 
 <style>
   sm-flag {
-    display: grid;
-    grid-template-columns: minmax(5ch, max-content) 75%;
+    display: flex;
     gap: var(--gutter);
     align-items: center;
+  }
+
+  sm-flag[reverse] {
+    flex-direction: row-reverse;
   }
 
   sm-flag > * {
@@ -18,6 +21,11 @@
   }
 
   sm-flag > *:nth-child(odd) {
+    inline-size: clamp(5ch, 4ch + 6vw, 25ch);
     align-self: start;
+  }
+
+  sm-flag > *:nth-child(even) {
+    flex: 1;
   }
 </style>

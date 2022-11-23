@@ -1,0 +1,19 @@
+<div webc:root is-stack>
+  <slot></slot>
+</div>
+
+<style>
+  sm-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gutter);
+  }
+
+  sm-flex > * {
+    flex: 1 1 auto;
+    flex-basis: var(--min-inline-size);
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+</style>

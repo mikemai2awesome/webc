@@ -5,7 +5,7 @@
 <style>
   sm-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(20ch, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(var(--min-inline-size), 1fr));
     gap: var(--gutter);
   }
 

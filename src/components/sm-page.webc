@@ -1,11 +1,18 @@
 <div webc:root>
-  <slot name="header"></slot>
+  <header>
+    <slot name="cover"></slot>
+    <slot name="avatar"></slot>
+    <slot name="title"></slot>
+    <slot name="subtitle"></slot>
+    <slot name="nav"></slot>
+  </header>
   <slot></slot>
   <slot name="footer"></slot>
 </div>
 
 <style>
-  sm-page[layout="classic"] {
+  sm-page {
+    --c-page-padding-block: clamp(var(--stack) * 1, 10vmax, var(--stack) * 2);
     display: grid;
     grid-template-rows: auto 1fr auto;
     margin: 0;
@@ -13,14 +20,144 @@
     min-block-size: 100dvb;
   }
 
+  sm-page > :is(header, main, footer) {
+    padding-inline: var(--page-padding-inline);
+  }
+
+  sm-page main {
+    padding-block: var(--c-page-padding-block);
+  }
+
+  sm-page > header {
+    padding-block-end: var(--c-page-padding-block);
+  }
+
+  sm-page > footer {
+    padding-block-start: var(--c-page-padding-block);
+  }
+
+  sm-page > header a {
+    font-weight: var(--font-weight-semibold);
+    text-decoration: none;
+  }
+
+  sm-page > header a:hover {
+    text-decoration: underline;
+  }
+
+  sm-page > header :is(h1 a, > h1, > a) {
+    display: block;
+    font-size: clamp(2.25rem, 2.125rem + 0.5vw, 2.75rem);
+    font-weight: var(--font-weight-bold);
+    line-height: 1;
+    letter-spacing: 0.02em;
+  }
+
+  sm-page > header > nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: calc(var(--gutter) / 4);
+    row-gap: calc(var(--stack) / 2);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 0.9em;
+  }
+
+  sm-page > header > nav ul li:after {
+    content: "\2022";
+    margin-inline-start: calc(var(--gutter) / 4);
+  }
+
+  sm-page > header > nav ul li:last-child:after {
+    display: none;
+  }
+
+  sm-page[layout="profile"] > header {
+    display: grid;
+    grid-template-areas: 
+      "cover cover cover cover"
+      ". avatar . ."
+      ". title title ."
+      ". subtitle subtitle ."
+      ". nav nav .";
+    grid-template-columns: var(--page-padding-inline) calc(4rem + 2vmax) 1fr var(--page-padding-inline);
+    grid-template-rows: auto 1fr auto auto auto;
+    padding-block-start: var(--c-page-padding-block);
+    padding-inline: 0;
+  }
+
+  sm-page[layout="profile"] > header > nav {
+    grid-area: nav;
+  }
+
+  sm-page[layout="profile"] > header > nav ul li {
+    margin: 0;
+  }
+
+  sm-page[layout="profile"] > header > img {
+    block-size: auto;
+    inline-size: 100%;
+    object-fit: cover;
+  }
+
+  sm-page[layout="profile"] > header > img:first-of-type {
+    grid-area: cover;
+    margin-block-start: calc(var(--c-page-padding-block) * -2);
+    aspect-ratio: 4/1;
+    border-radius: 0;
+  }
+
+  @media (orientation: portrait) {
+    sm-page[layout="profile"] > header > img:first-of-type {
+      aspect-ratio: 2/1;
+    }
+  }
+
+  sm-page[layout="profile"] > header > img:last-of-type {
+    grid-area: avatar;
+    margin-block-start: -75%;
+    aspect-ratio: 1/1;
+    border: calc(var(--border-width) * 2) solid var(--color-bg);
+    border-radius: 100em 100em 100em 0;
+  }
+
+  sm-page[layout="profile"] > header > img:only-of-type {
+    margin-block-start: 0;
+  }
+
+  sm-page[layout="profile"] > header > h1 {
+    grid-area: title;
+    align-self: center;
+    margin-block-start: calc(var(--stack) / 2);
+  }
+
+  sm-page[layout="profile"] > header > p {
+    grid-area: subtitle;
+  }
+
+  sm-page[layout="profile"] > header > p + nav{
+    margin-block-start: var(--stack);
+  }
+
+  sm-page[layout="profile"] > footer {
+    padding-block-end: var(--c-page-padding-block);
+  }
+
   sm-page[layout="classic"] > * {
     inline-size: 100vw;
     margin: 0;
   }
 
-  sm-page[layout="classic"] main {
-    padding-block: clamp(var(--stack) * 1, 10vmax, var(--stack) * 2);
-    padding-inline: var(--page-padding-inline);
+  sm-page[layout="classic"] > header {
+    padding-block-start: calc(var(--c-page-padding-block) * 2);
+    border-block-end: var(--border-width) var(--border-style);
+  }
+
+  sm-page[layout="classic"] > footer {
+    padding-block-end: calc(var(--c-page-padding-block) * 2);
+    border-block-start: var(--border-width) var(--border-style);
   }
 
   sm-page[layout="classic"] > :is(header, footer) {
@@ -37,46 +174,7 @@
     margin-inline: auto;
   }
 
-  sm-page[layout="classic"] > footer {
-    padding-block: clamp(var(--stack) * 1, 10vmax, var(--stack) * 2)
-      clamp(var(--stack) * 2, 10vmax, var(--stack) * 6);
-    padding-inline: var(--page-padding-inline);
-    border-block-start: var(--border-width) var(--border-style);
-  }
-
-  sm-page[layout="classic"] > header {
-    padding-block: clamp(var(--stack) * 2, 10vmax, var(--stack) * 6)
-      clamp(var(--stack) * 1, 10vmax, var(--stack) * 2);
-    padding-inline: var(--page-padding-inline);
-    border-block-end: var(--border-width) var(--border-style);
-  }
-
-  sm-page[layout="classic"] > header a {
-    font-weight: var(--font-weight-bold);
-    text-decoration: none;
-  }
-
-  sm-page[layout="classic"] > header a:hover {
-    text-decoration: underline;
-  }
-
-  sm-page[layout="classic"] > header :is(h1 a, > h1, > a) {
-    display: block;
-    font-size: clamp(2.25rem, 2.125rem + 0.5vw, 2.75rem);
-    font-weight: var(--font-weight-bold);
-    line-height: 1;
-    letter-spacing: 0.02em;
-  }
-
-  sm-page[layout="classic"] > header > nav ul {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    gap: calc(var(--gutter) / 2);
-    row-gap: calc(var(--stack) / 2);
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    font-size: 0.9em;
+  sm-page[layout="classic"] > header > :is(img, p) {
+    display: none;
   }
 </style>

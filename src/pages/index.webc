@@ -4,10 +4,10 @@ description: Minimalist black and white design system.
 layout: base.njk
 ---
 <sm-page layout="profile">
-  <img slot="cover" src="https://images.unsplash.com/photo-1616738655992-e3cbcf59b0a9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3431&q=80" alt="" width=1719 height=968>
-  <img slot="avatar" src="https://images.unsplash.com/photo-1600818797017-d6e5027210bb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2370&q=80" alt="" width=1452 height=968>
-  <h1 slot="title" @html="{{ title + ' (Beta)' }}"></h1>
-  <p slot="subtitle">@SuperMinimalDS</p>
+  <img slot="cover" src="https://images.unsplash.com/photo-1517816743773-6e0fd518b4a6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2370&q=80" alt="" width=1451 height=968>
+  <img slot="avatar" src="https://images.unsplash.com/photo-1586830746542-19b25c53497f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1393&q=80" alt="" width=821 height=968>
+  <h1 slot="title" @html="{{ title }}"></h1>
+  <p slot="subtitle"><q>Less is less!</q></p>
   <nav slot="nav">
     <ul>
       <li><a href="#foundations">Foundations</a></li>
@@ -17,54 +17,54 @@ layout: base.njk
   </nav>
   <main id="main-content">
     <h2>About</h2>
-		<p><big><span @html="{{ title }}"></span> is a design system built on <strong>black &amp; white</strong> CSS awesomeness with nice typography (for both English and Chinese). <q>Less is more</q> is the main principle of this mini design system.</big></p>
+		<p><big><span @html="{{ title }}"></span> is a design system built on <strong>black &amp; white</strong> CSS awesomeness with nice typography. Compatible with both Latin characters and Chinese characters.</big></p>
 		<figure>
 			<table>
-        <caption><span @html="{{ title }}"></span>&rsquo;s design guidelines.</caption>
+        <caption><span @html="{{ title }}"></span>&rsquo;s design principles.</caption>
 				<tbody>
 					<tr>
 						<th aria-hidden="true">&#10005;</th>
-						<td width=100% aria-label="The system does not use">Colors</td>
+						<td width="100%" aria-label="The system does not use">Colors</td>
 					</tr>
 					<tr>
 						<th aria-hidden="true">&#10005;</th>
-						<td width=100% aria-label="The system does not use">Classes</td>
+						<td width="100%" aria-label="The system does not use">Classes</td>
 					</tr>
 					<tr>
 						<th aria-hidden="true">&#10005;</th>
-						<td width=100% aria-label="The system does not use">Gradients</td>
+						<td width="100%" aria-label="The system does not use">Gradients</td>
 					</tr>
 					<tr>
 						<th aria-hidden="true">&#10005;</th>
-						<td width=100% aria-label="The system does not use">Animations</td>
+						<td width="100%" aria-label="The system does not use">Animations</td>
 					</tr>
 					<tr>
 						<th aria-hidden="true">&#10005;</th>
-						<td width=100% aria-label="The system does not use">Breakpoints</td>
+						<td width="100%" aria-label="The system does not use">Breakpoints</td>
 					</tr>
 					<tr>
 						<th aria-hidden="true">&#10005;</th>
-						<td width=100% aria-label="The system does not use">Custom fonts</td>
+						<td width="100%" aria-label="The system does not use">Custom fonts</td>
 					</tr>
 					<tr>
 						<th aria-hidden="true">&check;</th>
-						<td width=100% aria-label="The system does provide">Auto dark mode</td>
+						<td width="100%" aria-label="The system does provide">Auto dark mode</td>
 					</tr>
 					<tr>
 						<th aria-hidden="true">&check;</th>
-						<td width=100% aria-label="The system does provide">Hover &amp; focus styles</td>
+						<td width="100%" aria-label="The system does provide">Hover &amp; focus styles</td>
 					</tr>
 					<tr>
 						<th aria-hidden="true">&check;</th>
-						<td width=100% aria-label="The system does provide">Fluid typography &amp; spacing</td>
+						<td width="100%" aria-label="The system does provide">Fluid typography &amp; spacing</td>
 					</tr>
 					<tr>
 						<th aria-hidden="true">&check;</th>
-						<td width=100% aria-label="The system is">Under 15KB minified file size</td>
+						<td width="100%" aria-label="The system is">Under 15KB minified file size</td>
 					</tr>
 					<tr>
 						<th aria-hidden="true">&check;</th>
-						<td width=100% aria-label="The system has">Browser zoom &amp; font-size compatibility</td>
+						<td width="100%" aria-label="The system has">Browser zoom &amp; font-size compatibility</td>
 					</tr>
 				</tbody>
 			</table>
@@ -79,7 +79,7 @@ layout: base.njk
 					<tr>
 						<th>Token</th>
 						<th>Value</th>
-						<th width=100%>Description</th>
+						<th width="100%">Description</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -104,8 +104,8 @@ layout: base.njk
 				<thead>
 					<tr>
 						<th>Token</th>
-						<th width=50%>Value</th>
-						<th width=50%>Description</th>
+						<th width="50%">Value</th>
+						<th width="50%">Description</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -140,8 +140,8 @@ layout: base.njk
 				<thead>
 					<tr>
 						<th>Token</th>
-						<th width=50%>Value</th>
-						<th width=50%>Description</th>
+						<th width="50%">Value</th>
+						<th width="50%">Description</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -194,7 +194,7 @@ layout: base.njk
 		</details>
 		<details>
 			<summary><strong>Code Block</strong></summary>
-			<pre><code>// This is a block of code.<br>pre { display: block; }</code></pre>
+			<pre contenteditable><code>// This is a block of code.<br>pre { display: block; }</code></pre>
 		</details>
 		<details>
 			<summary><strong>Description List</strong></summary>
@@ -420,24 +420,24 @@ layout: base.njk
 		<h2 id="components">Components</h2>
 		<p>Components are stylized custom elements.</p>
     <h3>Grid</h3>
-    <p>A Grid places content blocks into evenly distributed columns and aligns them.</p>
+    <p>A Grid places content blocks into evenly distributed columns and aligns them. It is ideal for text content.</p>
 		<details open>
 			<summary>
         <p>Grid Demo</p>
       </summary>
-			<sm-grid is-box>
-				<img src="https://via.placeholder.com/900x600" alt="Placeholder" width=900 height=600>
-				<img src="https://via.placeholder.com/900x600" alt="Placeholder" width=900 height=600>
-				<img src="https://via.placeholder.com/900x600" alt="Placeholder" width=900 height=600>
-				<img src="https://via.placeholder.com/900x600" alt="Placeholder" width=900 height=600>
-				<img src="https://via.placeholder.com/900x600" alt="Placeholder" width=900 height=600>
+			<sm-grid>
+				<p>Sirloin chicken tail, cupim cow ribeye burgdoggen. Beef tongue kielbasa meatloaf, chicken jowl ground round. Flank sirloin doner, buffalo t-bone turducken picanha salami venison. Alcatra jowl chislic andouille meatloaf.</p>
+				<p>Sirloin chicken tail, cupim cow ribeye burgdoggen. Beef tongue kielbasa meatloaf, chicken jowl ground round. Flank sirloin doner, buffalo t-bone turducken picanha salami venison. Alcatra jowl chislic andouille meatloaf.</p>
+				<p>Sirloin chicken tail, cupim cow ribeye burgdoggen. Beef tongue kielbasa meatloaf, chicken jowl ground round. Flank sirloin doner, buffalo t-bone turducken picanha salami venison. Alcatra jowl chislic andouille meatloaf.</p>
+				<p>Sirloin chicken tail, cupim cow ribeye burgdoggen. Beef tongue kielbasa meatloaf, chicken jowl ground round. Flank sirloin doner, buffalo t-bone turducken picanha salami venison. Alcatra jowl chislic andouille meatloaf.</p>
+				<p>Sirloin chicken tail, cupim cow ribeye burgdoggen. Beef tongue kielbasa meatloaf, chicken jowl ground round. Flank sirloin doner, buffalo t-bone turducken picanha salami venison. Alcatra jowl chislic andouille meatloaf.</p>
       </sm-grid>
 		</details>
     <details open>
       <summary>
         <p>Grid Code</p>
       </summary>
-      <pre><code>&lt;sm-grid&gt;
+      <pre contenteditable><code>&lt;sm-grid&gt;
 &nbsp;&nbsp;&lt;img src="image.jpg" alt="Placeholder" width=900 height=600&gt;
 &nbsp;&nbsp;&lt;img src="image.jpg" alt="Placeholder" width=900 height=600&gt;
 &nbsp;&nbsp;&lt;img src="image.jpg" alt="Placeholder" width=900 height=600&gt;
@@ -447,7 +447,7 @@ layout: base.njk
 &lt;/sm-grid&gt;</code></pre>
     </details>
     <h3>Flex</h3>
-    <p>A Flex places content blocks into evenly distributed columns and stretches them to fill up available space.</p>
+    <p>A Flex places content blocks into evenly distributed columns and stretches them to fill up available space. It is ideal for media content.</p>
 		<details open>
 			<summary>
         <p>Flex Demo</p>
@@ -474,7 +474,7 @@ layout: base.njk
       <summary>
         <p>Flex Code</p>
       </summary>
-      <pre><code>&lt;sm-flex&gt;
+      <pre contenteditable><code>&lt;sm-flex&gt;
 &nbsp;&nbsp;&lt;sm-flex-item&gt;
 &nbsp;&nbsp;&nbsp;&nbsp;&lt;img src="image.jpg" alt="Placeholder" width=900 height=600&gt;
 &nbsp;&nbsp;&lt;/sm-flex-item&gt;
@@ -497,6 +497,25 @@ layout: base.njk
     </details>
     <h3>Flag</h3>
     <p>A Flag is composed of a signifier (image, icon, etc.) and content.</p>
+    <figure>
+      <table>
+        <caption>Flag component props.</caption>
+        <thead>
+          <tr>
+            <th>Prop</th>
+            <th>Value</th>
+            <th width="100%">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Reverse</td>
+            <td><code>null</code></td>
+            <td>Flip the placement of the signifier and content.</td>
+          </tr>
+        </tbody>
+      </table>
+    </figure>
     <details open>
       <summary>
         <p>Flag Demo</p>
@@ -511,7 +530,7 @@ layout: base.njk
       <summary>
         <p>Flag Code</p>
       </summary>
-      <pre><code>&lt;sm-flag&gt;
+      <pre contenteditable><code>&lt;sm-flag reverse&gt;
 &nbsp;&nbsp;&lt;img slot="signifier" src="image.jpg" alt="Placeholder" width=250 height=250&gt;
 &nbsp;&nbsp;&lt;h2&gt;Flag Heading&lt;/h2&gt;
 &nbsp;&nbsp;&lt;p&gt;Flag paragraph. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae cupiditate, praesentium ducimus necessitatibus tenetur molestias est fuga consequuntur maiores.&lt;/p&gt;
@@ -521,21 +540,25 @@ layout: base.njk
     <p>A Page defines the layout for the entire page. Each layout is made up of header, main content, and footer. Header and footer are pushed against the top and bottom of the page respectively, regardless of how tall the main content is. The content has a max width of 75 characters, which is the optimal line length.</p>
     <figure>
       <table>
-        <caption>Page layouts.</caption>
+        <caption>Page component props.</caption>
         <thead>
           <tr>
-            <th>Layout</th>
-            <th>Description</th>
+            <th>Prop</th>
+            <th>Value</th>
+            <th width="100%">Description</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Classic</td>
-            <td>A single column page layout with a classic header that is composed of just heading and navigation.</td>
-          </tr>
-          <tr>
-            <td>Profile</td>
-            <td>A single column page layout with a profile header that features a cover image and an avatar image.</td>
+            <td>Layout</td>
+            <td><code>classic</code>, <code>hero</code>, <code>profile</code></td>
+            <td>
+              <ul>
+                <li>Classic is a single column page layout with a classic header that is composed of a simple heading and navigation.</li>
+                <li>Hero is a single column page layout with a hero header that utilizes expressive typography for the heading.</li>
+                <li>Profile is a single column page layout with a profile header that features a cover image and an avatar image.</li>
+              </ul>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -544,11 +567,32 @@ layout: base.njk
       <summary>
         <p>Page Code</p>
       </summary>
-      <pre><code>&lt;!-- Classic Page --&gt;
+      <pre contenteditable><code>&lt;!-- Classic Page --&gt;
 &lt;sm-page layout="classic"&gt;
 &nbsp;&nbsp;&lt;h1 slot="title"&gt;
 &nbsp;&nbsp;&nbsp;&nbsp;Title
 &nbsp;&nbsp;&lt;/h1&gt;
+&nbsp;&nbsp;&lt;nav slot="nav"&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;
+&nbsp;&nbsp;&lt;/nav&gt;
+&nbsp;&nbsp;&lt;main&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;Main content
+&nbsp;&nbsp;&lt;/main&gt;
+&nbsp;&nbsp;&lt;footer slot="footer"&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;Footer
+&nbsp;&nbsp;&lt;/footer&gt;
+&lt;/sm-page&gt;
+
+&lt;!-- Hero Page --&gt;
+&lt;sm-page layout="hero"&gt;
+&nbsp;&nbsp;&lt;h1 slot="title"&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;Title
+&nbsp;&nbsp;&lt;/h1&gt;
+&nbsp;&nbsp;&lt;p slot="subtitle"&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;Subtitle
+&nbsp;&nbsp;&lt;/p&gt;
 &nbsp;&nbsp;&lt;nav slot="nav"&gt;
 &nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&gt;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...

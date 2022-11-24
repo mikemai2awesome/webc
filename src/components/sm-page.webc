@@ -21,19 +21,8 @@
   }
 
   sm-page > :is(header, main, footer) {
-    padding-inline: var(--page-padding-inline);
-  }
-
-  sm-page main {
     padding-block: var(--c-page-padding-block);
-  }
-
-  sm-page > header {
-    padding-block-end: var(--c-page-padding-block);
-  }
-
-  sm-page > footer {
-    padding-block-start: var(--c-page-padding-block);
+    padding-inline: var(--page-padding-inline);
   }
 
   sm-page > header a {
@@ -45,11 +34,11 @@
     text-decoration: underline;
   }
 
-  sm-page > header :is(h1 a, > h1, > a) {
+  sm-page > header > :is(h1 > a, h1, a) {
     display: block;
     font-size: clamp(2.25rem, 2.125rem + 0.5vw, 2.75rem);
     font-weight: var(--font-weight-bold);
-    line-height: 1;
+    line-height: 1.2;
     letter-spacing: 0.02em;
   }
 
@@ -74,6 +63,52 @@
     display: none;
   }
 
+  sm-page[layout="hero"] > header {
+    display: grid;
+    grid-template-areas: 
+      ". . ."
+      ". title ."
+      ". subtitle ."
+      ". nav ."
+      ". . .";
+    grid-template-columns: 5vw 1fr 5vw;
+    grid-template-rows: 1fr auto auto auto 1fr;
+    justify-items: center;
+    row-gap: var(--stack);
+    min-block-size: 100vh;
+    min-block-size: 100dvb;
+    padding-inline: 0;
+    border-block: calc(var(--border-width) * 10) var(--border-style);
+  }
+
+  sm-page[layout="hero"] > header > * {
+    margin: 0;
+    text-align: center;
+  }
+
+  sm-page[layout="hero"] > header > :is(h1, h1 > a, a) {
+    grid-area: title;
+    font-size: clamp(2.25rem, 2.125rem + 8vw, 9rem);
+    letter-spacing: -0.04em;
+  }
+
+  sm-page[layout="hero"] > header > p {
+    grid-area: subtitle;
+    font-size: clamp(1.25rem, 1.125rem + 8vw, 3rem);
+  }
+
+  sm-page[layout="hero"] > header > nav {
+    grid-area: nav;
+  }
+
+  sm-page[layout="hero"] > header > nav ul {
+    justify-content: center;
+  }
+
+  sm-page[layout="hero"] > header > img {
+    display: none;
+  }
+
   sm-page[layout="profile"] > header {
     display: grid;
     grid-template-areas: 
@@ -84,7 +119,6 @@
       ". nav nav .";
     grid-template-columns: var(--page-padding-inline) calc(4rem + 2vmax) 1fr var(--page-padding-inline);
     grid-template-rows: auto 1fr auto auto auto;
-    padding-block-start: var(--c-page-padding-block);
     padding-inline: 0;
   }
 
@@ -119,7 +153,7 @@
     grid-area: avatar;
     margin-block-start: -75%;
     aspect-ratio: 1/1;
-    border: calc(var(--border-width) * 2) solid var(--color-bg);
+    border: calc(var(--border-width) * 2) var(--border-style) var(--color-bg);
     border-radius: 100em 100em 100em 0;
   }
 
@@ -138,7 +172,7 @@
   }
 
   sm-page[layout="profile"] > header > p + nav{
-    margin-block-start: var(--stack);
+    margin-block-start: calc(var(--stack) * 1.5);
   }
 
   sm-page[layout="profile"] > footer {

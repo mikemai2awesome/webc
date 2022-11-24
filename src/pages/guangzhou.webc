@@ -1,0 +1,25 @@
+---
+title: Guangzhou
+description: Beautiful photos of my hometown Guangzhou.
+layout: base.njk
+---
+<sm-page layout="profile">
+  <img slot="cover" src="https://images.unsplash.com/photo-1616738655992-e3cbcf59b0a9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3431&q=80" alt="" width=1719 height=968>
+  <img slot="avatar" src="https://images.unsplash.com/photo-1600818797017-d6e5027210bb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2370&q=80" alt="" width=1452 height=968>
+  <h1 slot="title" @html="{{ title }}"></h1>
+  <p slot="subtitle"><big><span @html="{{ title }}"></span> is a mega city located in southern China and the place I call home.</big></p>
+  <main id="main-content">
+    <sm-grid is-box>
+      <img src="https://via.placeholder.com/900x600" alt="Placeholder" width=900 height=600>
+      <img src="https://via.placeholder.com/900x600" alt="Placeholder" width=900 height=600>
+      <img src="https://via.placeholder.com/900x600" alt="Placeholder" width=900 height=600>
+      <img src="https://via.placeholder.com/900x600" alt="Placeholder" width=900 height=600>
+      <img src="https://via.placeholder.com/900x600" alt="Placeholder" width=900 height=600>
+    </sm-grid>
+  </main>
+	<footer slot="footer">
+		<p>
+			<small>Built with 11ty and WebC by <a href="https://mikemai.net">Mike Mai</a>.</small>
+		</p>
+	</footer>
+</sm-page>

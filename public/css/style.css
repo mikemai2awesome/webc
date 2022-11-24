@@ -241,6 +241,10 @@
     margin-inline-start: 4ch; /* Unify indent for all lists inside details. */
   }
   
+  :where(table ul, table ol) {
+    margin-inline-start: 2ch; /* Unify indent for all lists inside table. */
+  }
+  
   :where(li > ul, li > ol, fieldset ul, fieldset ol) {
     margin-inline-start: 2.25ch; /* Unify indent for all nested lists. */
   }
@@ -380,6 +384,11 @@
     word-spacing: normal;
     word-break: normal;
     word-wrap: break-word;
+  }
+
+  :where(pre code) {
+    max-block-size: 60vh;
+    overflow: auto;
   }
 
   :where(dl) {

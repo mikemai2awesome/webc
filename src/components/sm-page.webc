@@ -1,10 +1,10 @@
 <div webc:root>
   <header>
-    <slot name="cover"></slot>
-    <slot name="avatar"></slot>
     <slot name="title"></slot>
     <slot name="subtitle"></slot>
     <slot name="nav"></slot>
+    <slot name="cover"></slot>
+    <slot name="avatar"></slot>
   </header>
   <slot></slot>
   <slot name="footer"></slot>
@@ -36,10 +36,8 @@
 
   sm-page > header > :is(h1 > a, h1, a) {
     display: block;
-    font-size: clamp(2.25rem, 2.125rem + 0.5vw, 2.75rem);
     font-weight: var(--font-weight-bold);
     line-height: 1.2;
-    letter-spacing: 0.02em;
   }
 
   sm-page > header > nav ul {
@@ -63,22 +61,28 @@
     display: none;
   }
 
+  sm-page[layout="hero"] {
+    --c-page-padding-block: clamp(var(--stack) * 2, 10vmax, var(--stack) * 4);
+  }
+
   sm-page[layout="hero"] > header {
     display: grid;
     grid-template-areas: 
       ". . ."
+      ". avatar ."
       ". title ."
       ". subtitle ."
       ". nav ."
       ". . .";
     grid-template-columns: 5vw 1fr 5vw;
-    grid-template-rows: 1fr auto auto auto 1fr;
+    grid-template-rows: 1fr calc(4rem + 2vmax) auto auto auto 1fr;
     justify-items: center;
     row-gap: var(--stack);
+    position: relative;
     min-block-size: 100vh;
     min-block-size: 100dvb;
     padding-inline: 0;
-    border-block: calc(var(--border-width) * 10) var(--border-style);
+    border-block: calc(var(--border-width) * 10) solid;
   }
 
   sm-page[layout="hero"] > header > * {
@@ -105,8 +109,25 @@
     justify-content: center;
   }
 
-  sm-page[layout="hero"] > header > img {
-    display: none;
+  sm-page[layout="hero"] > header > img:first-of-type {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    block-size: 100%;
+    inline-size: 100%;
+    object-fit: cover;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    border-radius: 0;
+  }
+
+  sm-page[layout="hero"] > header > img:last-of-type {
+    grid-area: avatar;
+    block-size: calc(4rem + 2vmax);
+    inline-size: calc(4rem + 2vmax);
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 100em;
   }
 
   sm-page[layout="profile"] > header {
@@ -153,7 +174,7 @@
     grid-area: avatar;
     margin-block-start: -75%;
     aspect-ratio: 1/1;
-    border: calc(var(--border-width) * 2) var(--border-style) var(--color-bg);
+    border: calc(var(--border-width) * 2) solid var(--color-bg);
     border-radius: 100em 100em 100em 0;
   }
 
@@ -161,10 +182,11 @@
     margin-block-start: 0;
   }
 
-  sm-page[layout="profile"] > header > h1 {
+  sm-page[layout="profile"] > header > :is(h1, h1 > a, a) {
     grid-area: title;
     align-self: center;
     margin-block-start: calc(var(--stack) / 2);
+    font-size: clamp(1.75rem, 1.5rem + 0.25vw, 2.75rem);
   }
 
   sm-page[layout="profile"] > header > p {
@@ -189,6 +211,10 @@
     border-block-end: var(--border-width) var(--border-style);
   }
 
+  sm-page[layout="classic"] > header > :is(h1, h1 > a, a) {
+    font-size: clamp(1.5rem, 1.25rem + 0.25vw, 2.75rem);
+  }
+
   sm-page[layout="classic"] > footer {
     padding-block-end: calc(var(--c-page-padding-block) * 2);
     border-block-start: var(--border-width) var(--border-style);
@@ -203,7 +229,7 @@
     row-gap: calc(var(--stack) / 2);
   }
 
-  sm-page[layout="classic"] > :is(header, footer > *:only-child) {
+  sm-page[layout="classic"] > :is(header, footer) > *:only-child {
     margin-block: 0;
     margin-inline: auto;
   }

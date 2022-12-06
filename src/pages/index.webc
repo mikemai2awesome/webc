@@ -3,11 +3,11 @@ title: Super Minimal Design System
 description: Minimalist black and white design system.
 layout: base.njk
 ---
-<sm-page layout="profile">
+<sm-page layout="hero">
   <img slot="cover" src="https://images.unsplash.com/photo-1517816743773-6e0fd518b4a6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2370&q=80" alt="" width=1451 height=968>
   <img slot="avatar" src="https://images.unsplash.com/photo-1586830746542-19b25c53497f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1393&q=80" alt="" width=821 height=968>
   <h1 slot="title" @html="{{ title }}"></h1>
-  <p slot="subtitle"><q>Less is less!</q></p>
+  <p slot="subtitle">Less is less!</p>
   <nav slot="nav">
     <ul>
       <li><a href="#foundations">Foundations</a></li>
@@ -17,7 +17,7 @@ layout: base.njk
   </nav>
   <main id="main-content">
     <h2>About</h2>
-		<p><big><span @html="{{ title }}"></span> is a design system built on <strong>black &amp; white</strong> CSS awesomeness with nice typography. Compatible with both Latin characters and Chinese characters.</big></p>
+		<p><big><span @html="{{ title }}"></span> is a design system composed with <strong>black &amp; white</strong> CSS awesomeness with nice typography. Compatible with both Latin characters and Chinese characters.</big></p>
 		<figure>
 			<table>
         <caption><span @html="{{ title }}"></span>&rsquo;s design principles.</caption>
@@ -56,6 +56,10 @@ layout: base.njk
 					</tr>
 					<tr>
 						<th aria-hidden="true">&check;</th>
+						<td width="100%" aria-label="The system does provide">Auto high contrast mode</td>
+					</tr>
+					<tr>
+						<th aria-hidden="true">&check;</th>
 						<td width="100%" aria-label="The system does provide">Fluid typography &amp; spacing</td>
 					</tr>
 					<tr>
@@ -72,104 +76,113 @@ layout: base.njk
     <hr>
     <h2 id="foundations">Foundations</h2>
     <p>The system is built on a small set of design tokens.</p>
-		<h3>Color (or lack thereof)</h3>
-		<figure>
-			<table>
-				<thead>
-					<tr>
-						<th>Token</th>
-						<th>Value</th>
-						<th width="100%">Description</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>--color-text</td>
-						<td>#f4f4f4</td>
-						<td>The page text color.</td>
-					</tr>
-					<tr>
-						<td>--color-bg</td>
-						<td>#202020</td>
-						<td>The page background color.</td>
-					</tr>
-				</tbody>
-			</table>
-		</figure>
-		<p>Everything is black and white. Actually, off-black and off-white because the strong contrast of true black and white will hurt your eyes. You are welcome.</p>
-		<p>There are only 2 tokens: page text color and page background color. The two colors are basically the opposite of each other, which means high contrast. Each element is colored with considerations to that relationship.</p>
-		<h3>Spacing</h3>
-		<figure>
-			<table>
-				<thead>
-					<tr>
-						<th>Token</th>
-						<th width="50%">Value</th>
-						<th width="50%">Description</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>--gutter</td>
-						<td>Scale from 1ch to 3ch</td>
-						<td>The inline spacing base and the grid gutter.</td>
-					</tr>
-					<tr>
-						<td>--stack</td>
-						<td>Scale from 1.25ex to 1.75ex</td>
-						<td>The block spacing base and the default paragraph spacing.</td>
-					</tr>
-					<tr>
-						<td>--line-length</td>
-						<td>75ch</td>
-						<td>The optimal line length for reading.</td>
-					</tr>
-					<tr>
-						<td>--page-padding-inline</td>
-						<td>Scale from 5vw to whatever is available after subtracting the optimal line length of 75ch from 100% viewpoint width</td>
-						<td>The inline inset spacing of a single-column page layout.</td>
-					</tr>
-				</tbody>
-			</table>
-		</figure>
-		<p>Spacing is fluid. It scales with viewport and character width horizontally; it scales with viewport and x-height vertically. This approach allows any System UI font to have unique spacing.</p>
-		<p>There is no range of spacing tokens, only the base ones. For each use case, spacing is calculated using the base tokens.</p>
-		<h3>Typography</h3>
-		<figure>
-			<table>
-				<thead>
-					<tr>
-						<th>Token</th>
-						<th width="50%">Value</th>
-						<th width="50%">Description</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>--font</td>
-						<td>System UI Sans</td>
-						<td>The sans-serif font for heading and body text.</td>
-					</tr>
-					<tr>
-						<td>--font-italic</td>
-						<td>Georgia</td>
-						<td>The classic font is used solely for blockquotes and italic text (because italic sans-serif is ugly).</td>
-					</tr>
-					<tr>
-						<td>--font-code</td>
-						<td>System UI Monospace</td>
-						<td>The monospace font for code text.</td>
-					</tr>
-					<tr>
-						<td>--font-size</td>
-						<td>100%</td>
-						<td>The root font-size of a page.</td>
-					</tr>
-				</tbody>
-			</table>
-		</figure>
-		<p>System UI fonts are applied to optimize performance and the heading hierarchy is defined by the browser defaults.</p>
-		<p>The root font-size is fluid, which allows all text to scale with viewport.</p>
+		<details>
+      <summary><strong>Color (or lack thereof)</strong></summary>
+      <figure>
+        <table>
+          <caption>Super Minimal color tokens.</caption>
+          <thead>
+            <tr>
+              <th>Token</th>
+              <th width="50%">Value</th>
+              <th width="50%">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>--color-text</td>
+              <td>#f4f4f4</td>
+              <td>The page text color.</td>
+            </tr>
+            <tr>
+              <td>--color-bg</td>
+              <td>#202020</td>
+              <td>The page background color.</td>
+            </tr>
+          </tbody>
+        </table>
+      </figure>
+      <p>Everything is black and white. Actually, off-black and off-white because the strong contrast of true black and white will hurt your eyes. You are welcome.</p>
+      <p>There are only 2 tokens: page text color and page background color. The two colors are basically the opposite of each other, which means high contrast. Each element is colored with considerations to that relationship.</p>
+    </details>
+    <details>
+      <summary><strong>Spacing</strong></summary>
+      <figure>
+        <table>
+          <caption>Super Minimal spacing tokens.</caption>
+          <thead>
+            <tr>
+              <th>Token</th>
+              <th width="50%">Value</th>
+              <th width="50%">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>--gutter</td>
+              <td>Scale from 1ch to 3ch</td>
+              <td>The inline spacing base and the grid gutter.</td>
+            </tr>
+            <tr>
+              <td>--stack</td>
+              <td>Scale from 1.25ex to 1.75ex</td>
+              <td>The block spacing base and the default paragraph spacing.</td>
+            </tr>
+            <tr>
+              <td>--line-length</td>
+              <td>75ch</td>
+              <td>The optimal line length for reading.</td>
+            </tr>
+            <tr>
+              <td>--page-padding-inline</td>
+              <td>Scale from 5vw to whatever is available after subtracting the optimal line length of 75ch from 100% viewpoint width</td>
+              <td>The inline inset spacing of a single-column page layout.</td>
+            </tr>
+          </tbody>
+        </table>
+      </figure>
+      <p>Spacing is fluid. It scales with viewport and character width horizontally; it scales with viewport and x-height vertically. This approach allows any System UI font to have unique spacing.</p>
+      <p>There is no range of spacing tokens, only the base ones. For each use case, spacing is calculated using the base tokens.</p>
+    </details>
+    <details>
+      <summary><strong>Typography</strong></summary>
+      <figure>
+        <table>
+          <caption>Super Minimal typography tokens.</caption>
+          <thead>
+            <tr>
+              <th>Token</th>
+              <th width="50%">Value</th>
+              <th width="50%">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>--font</td>
+              <td>System UI Sans</td>
+              <td>The sans-serif font for heading and body text.</td>
+            </tr>
+            <tr>
+              <td>--font-italic</td>
+              <td>Georgia</td>
+              <td>The classic font is used solely for blockquotes and italic text (because italic sans-serif is ugly).</td>
+            </tr>
+            <tr>
+              <td>--font-code</td>
+              <td>System UI Monospace</td>
+              <td>The monospace font for code text.</td>
+            </tr>
+            <tr>
+              <td>--font-size</td>
+              <td>100%</td>
+              <td>The root font-size of a page.</td>
+            </tr>
+          </tbody>
+        </table>
+      </figure>
+      <p>System UI fonts are applied to optimize performance and the heading hierarchy is defined by the browser defaults.</p>
+      <p>The root font-size is fluid, which allows all text to scale with viewport.</p>
+    </details>
 		<hr>
 		<h2 id="elements">Elements</h2>
 		<p>Elements are stylized naked <code>HTML</code> elements.</p>
@@ -427,10 +440,10 @@ layout: base.njk
       </summary>
 			<sm-grid>
 				<p>Sirloin chicken tail, cupim cow ribeye burgdoggen. Beef tongue kielbasa meatloaf, chicken jowl ground round. Flank sirloin doner, buffalo t-bone turducken picanha salami venison. Alcatra jowl chislic andouille meatloaf.</p>
-				<p>Sirloin chicken tail, cupim cow ribeye burgdoggen. Beef tongue kielbasa meatloaf, chicken jowl ground round. Flank sirloin doner, buffalo t-bone turducken picanha salami venison. Alcatra jowl chislic andouille meatloaf.</p>
-				<p>Sirloin chicken tail, cupim cow ribeye burgdoggen. Beef tongue kielbasa meatloaf, chicken jowl ground round. Flank sirloin doner, buffalo t-bone turducken picanha salami venison. Alcatra jowl chislic andouille meatloaf.</p>
-				<p>Sirloin chicken tail, cupim cow ribeye burgdoggen. Beef tongue kielbasa meatloaf, chicken jowl ground round. Flank sirloin doner, buffalo t-bone turducken picanha salami venison. Alcatra jowl chislic andouille meatloaf.</p>
-				<p>Sirloin chicken tail, cupim cow ribeye burgdoggen. Beef tongue kielbasa meatloaf, chicken jowl ground round. Flank sirloin doner, buffalo t-bone turducken picanha salami venison. Alcatra jowl chislic andouille meatloaf.</p>
+				<p>Kielbasa hamburger leberkas pig turkey doner venison capicola cupim pork chop chuck shank meatloaf alcatra ham. Doner kielbasa tenderloin chicken pork chop, tri-tip shank tail ball tip filet mignon frankfurter.</p>
+				<p>Bacon t-bone turducken, turkey strip steak sausage flank filet mignon chuck picanha jowl tail fatback andouille. Buffalo pancetta frankfurter pig pork loin leberkas. Pork chop bacon sausage hamburger, strip steak.</p>
+				<p>Fatback shoulder picanha salami meatball shank andouille tri-tip, kielbasa prosciutto jowl boudin strip steak. Sausage ground round pancetta flank beef, chislic short ribs tail pork kevin salami spare ribs strip steak.</p>
+				<p>Turkey venison pig bacon, pork chop capicola chicken porchetta. Alcatra porchetta rump tri-tip pig. Tail beef kielbasa cupim landjaeger buffalo tri-tip pig prosciutto. Alcatra bresaola ham hock.</p>
       </sm-grid>
 		</details>
     <details open>
@@ -438,12 +451,11 @@ layout: base.njk
         <p>Grid Code</p>
       </summary>
       <pre contenteditable><code>&lt;sm-grid&gt;
-&nbsp;&nbsp;&lt;img src="image.jpg" alt="Placeholder" width=900 height=600&gt;
-&nbsp;&nbsp;&lt;img src="image.jpg" alt="Placeholder" width=900 height=600&gt;
-&nbsp;&nbsp;&lt;img src="image.jpg" alt="Placeholder" width=900 height=600&gt;
-&nbsp;&nbsp;&lt;img src="image.jpg" alt="Placeholder" width=900 height=600&gt;
-&nbsp;&nbsp;&lt;img src="image.jpg" alt="Placeholder" width=900 height=600&gt;
-&nbsp;&nbsp;&lt;img src="image.jpg" alt="Placeholder" width=900 height=600&gt;
+&nbsp;&nbsp;&lt;p&gt;&hellip;&lt;/p&gt;
+&nbsp;&nbsp;&lt;p&gt;&hellip;&lt;/p&gt;
+&nbsp;&nbsp;&lt;p&gt;&hellip;&lt;/p&gt;
+&nbsp;&nbsp;&lt;p&gt;&hellip;&lt;/p&gt;
+&nbsp;&nbsp;&lt;p&gt;&hellip;&lt;/p&gt;
 &lt;/sm-grid&gt;</code></pre>
     </details>
     <h3>Flex</h3>
@@ -453,21 +465,21 @@ layout: base.njk
         <p>Flex Demo</p>
       </summary>
 			<sm-flex is-box>
-				<sm-flex-item>
+				<sm-flexitem>
           <img src="https://via.placeholder.com/900x600" alt="Placeholder" width=900 height=600>
-        </sm-flex-item>
-				<sm-flex-item>
+        </sm-flexitem>
+				<sm-flexitem>
           <img src="https://via.placeholder.com/900x600" alt="Placeholder" width=900 height=600>
-        </sm-flex-item>
-				<sm-flex-item>
+        </sm-flexitem>
+				<sm-flexitem>
           <img src="https://via.placeholder.com/900x600" alt="Placeholder" width=900 height=600>
-        </sm-flex-item>
-				<sm-flex-item>
+        </sm-flexitem>
+				<sm-flexitem>
           <img src="https://via.placeholder.com/900x600" alt="Placeholder" width=900 height=600>
-        </sm-flex-item>
-				<sm-flex-item>
+        </sm-flexitem>
+				<sm-flexitem>
           <img src="https://via.placeholder.com/900x600" alt="Placeholder" width=900 height=600>
-        </sm-flex-item>
+        </sm-flexitem>
       </sm-flex>
 		</details>
     <details open>
@@ -475,24 +487,24 @@ layout: base.njk
         <p>Flex Code</p>
       </summary>
       <pre contenteditable><code>&lt;sm-flex&gt;
-&nbsp;&nbsp;&lt;sm-flex-item&gt;
+&nbsp;&nbsp;&lt;sm-flexitem&gt;
 &nbsp;&nbsp;&nbsp;&nbsp;&lt;img src="image.jpg" alt="Placeholder" width=900 height=600&gt;
-&nbsp;&nbsp;&lt;/sm-flex-item&gt;
-&nbsp;&nbsp;&lt;sm-flex-item&gt;
+&nbsp;&nbsp;&lt;/sm-flexitem&gt;
+&nbsp;&nbsp;&lt;sm-flexitem&gt;
 &nbsp;&nbsp;&nbsp;&nbsp;&lt;img src="image.jpg" alt="Placeholder" width=900 height=600&gt;
-&nbsp;&nbsp;&lt;/sm-flex-item&gt;
-&nbsp;&nbsp;&lt;sm-flex-item&gt;
+&nbsp;&nbsp;&lt;/sm-flexitem&gt;
+&nbsp;&nbsp;&lt;sm-flexitem&gt;
 &nbsp;&nbsp;&nbsp;&nbsp;&lt;img src="image.jpg" alt="Placeholder" width=900 height=600&gt;
-&nbsp;&nbsp;&lt;/sm-flex-item&gt;
-&nbsp;&nbsp;&lt;sm-flex-item&gt;
+&nbsp;&nbsp;&lt;/sm-flexitem&gt;
+&nbsp;&nbsp;&lt;sm-flexitem&gt;
 &nbsp;&nbsp;&nbsp;&nbsp;&lt;img src="image.jpg" alt="Placeholder" width=900 height=600&gt;
-&nbsp;&nbsp;&lt;/sm-flex-item&gt;
-&nbsp;&nbsp;&lt;sm-flex-item&gt;
+&nbsp;&nbsp;&lt;/sm-flexitem&gt;
+&nbsp;&nbsp;&lt;sm-flexitem&gt;
 &nbsp;&nbsp;&nbsp;&nbsp;&lt;img src="image.jpg" alt="Placeholder" width=900 height=600&gt;
-&nbsp;&nbsp;&lt;/sm-flex-item&gt;
-&nbsp;&nbsp;&lt;sm-flex-item&gt;
+&nbsp;&nbsp;&lt;/sm-flexitem&gt;
+&nbsp;&nbsp;&lt;sm-flexitem&gt;
 &nbsp;&nbsp;&nbsp;&nbsp;&lt;img src="image.jpg" alt="Placeholder" width=900 height=600&gt;
-&nbsp;&nbsp;&lt;/sm-flex-item&gt;
+&nbsp;&nbsp;&lt;/sm-flexitem&gt;
 &lt;/sm-flex&gt;</code></pre>
     </details>
     <h3>Flag</h3>
@@ -629,6 +641,93 @@ layout: base.njk
 &nbsp;&nbsp;&lt;/footer&gt;
 &lt;/sm-page&gt;</code></pre>
     </details>
+		<hr>
+		<article>
+			<h1>Article Demo: Everything All Together Now</h1>
+			<p>For decades, South Florida<sup>1</sup> schoolchildren and adults fascinated by far-off galaxies, earthly ecosystems, the properties of light and sound and other wonders of science had only a quaint, antiquated museum here in which to explore their interests. <q>Now, with the long-delayed opening of a vast new science museum downtown set for Monday, visitors will be able to stand underneath a suspended, 500,000-gallon aquarium tank and gaze at hammerhead and tiger sharks, mahi mahi, devil rays and other creatures through a 60,000-pound oculus, a lens that will give the impression of seeing the fish<sub>a</sub> from the bottom of a huge cocktail glass.</q></p>
+			<figure>
+				<img src="https://via.placeholder.com/900x600" alt="Placeholder" width=900 height=600>
+				<figcaption>
+					Fig 1: The recording starts with the patter of a summer squall.
+				</figcaption>
+			</figure>
+			<p>Swimming hundreds of feet beneath the ocean’s surface in many parts of the world are prolific architects called <code>giant larvaceans</code>. These zooplankton are not particularly giant themselves (they resemble tadpoles and are about the size of a pinkie finger), but every day, they construct one or more spacious houses that can exceed three feet in length. The houses are transparent mucus structures that encase the creatures inside. Giant larvaceans beat their tails to pump seawater through these structures, which filter tiny bits of dead or drifting organic matter for the animals to eat. When their filters get clogged, the larvaceans abandon ship and construct a new house. Laden with debris from the water column, old houses rapidly sink to the seafloor.</p>
+			<h2>In Science Advances on Wednesday</h2>
+			<p>Scientists near California’s Monterey Bay have found that, through this process, giant larvaceans can filter all of the bay’s water from about 300 to 1,000 feet deep in less than two weeks, making them the fastest known zooplankton filter feeders. In doing so, the creatures help transfer carbon that has been removed from the atmosphere by photosynthesizing organisms to the deep sea, where it can be buried and stored long term. And given their abundance in other parts of the world, these organisms likely play a crucial role in the global carbon cycle. When it comes to the flow of carbon in the ocean, we don’t know nearly as much as we should,” said Kakani Katija, a principal engineer at the Monterey Bay Aquarium Research Institute and the study’s lead author. If we really want to understand how the system works, we have to look at all the players involved. Giant larvaceans are one important group we need to learn more about.” <kbd>enter</kbd></p>
+			<blockquote>
+				<p>
+					<q>My favorite book is <cite>The Elements of Typographic Style</cite>.</q>
+				</p>
+				<footer>
+					<small>
+						&mdash;&thinsp;Mike Mai
+					</small>
+				</footer>
+			</blockquote>
+			<h3>In The Past</h3>
+			<p>Other scientists have tried studying giant larvaceans in the laboratory. But these efforts always failed because the animals’ houses were too fragile to be harvested and collected specimens were never able to build houses outside the ocean. To study the zooplankton in their natural habitat, Dr. Katija and her collaborators developed a new deep-sea imaging instrument, called DeepPIV, which they paired with a remotely operated vehicle. DeepPIV projects a sheet of laser light that cuts straight through a larvacean’s mucus house.</p>
+			<pre><code>.ranger--texas { color: chucknorris; }</code></pre>
+			<ul>
+				<li>A high-definition camera on the remotely operated vehicle</li>
+				<li>can then capture the inner pumping mechanisms</li>
+				<li>illuminated by the laser.</li>
+			</ul>
+			<p>The recording starts with the patter of a summer squall. Later, a drifting tone like that of a not-quite-tuned-in radio station rises and for a while drowns out the patter. These are the sounds encountered by NASA’s Cassini spacecraft as it dove through the gap between Saturn and its innermost ring on April 26, the first of 22 such encounters before it will plunge into Saturn’s atmosphere in September.</p>
+			<h3>What Cassini Did Not Detect</h3>
+			<p>Were many of the collisions of dust particles hitting the spacecraft as it passed through the plane of the rings. You can hear a couple of clicks,” said William S. Kurth, a research scientist at the University of Iowa who is the principal investigator for Cassini’s radio and plasma science instrument. The few dust hits that were recorded sounded like the small pops caused by dust on a LP record, he said. What he had expected was something more like the din of driving through Iowa in a hailstorm,” Dr. Kurth said. Since Cassini had not passed through this region before, scientists and engineers did not know for certain what it would encounter. Cassini would be traveling at more than 70,000 miles per hour as it passed within 2,000 miles of the cloud tops, and a chance hit with a sand grain could be trouble. The analysis indicated that the chances of such a collision were slim, but still risky enough that mission managers did not send Cassini here until the mission’s final months. As a better-safe-than-sorry precaution, the spacecraft was pointed with its big radio dish facing forward, like a shield. Not only was there nothing catastrophic, there was hardly anything at all. The few clicking sounds were generated by dust the size of cigarette smoke particles about a micron, or one-25,000th of an inch, in diameter. To be clear: Cassini did not actually hear any sounds.</p>
+			<sm-grid>
+				<figure>
+					<img src="https://via.placeholder.com/450x300" alt="Placeholder" width=450 height=300>
+					<figcaption>Fig 2</figcaption>
+				</figure>
+				<figure>
+					<img src="https://via.placeholder.com/450x300" alt="Placeholder" width=450 height=300>
+					<figcaption>Fig 3</figcaption>
+				</figure>
+				<figure>
+					<img src="https://via.placeholder.com/450x300" alt="Placeholder" width=450 height=300>
+					<figcaption>Fig 4</figcaption>
+				</figure>
+			</sm-grid>
+			<ol>
+				<li>It is, after all, flying</li>
+				<li>through space where there is no air</li>
+				<li>and thus no vibrating air molecules to convey sound waves.</li>
+			</ol>
+			<p>But space is full of radio waves, recorded by Dr. Kurth’s instrument, and those waves, just like the ones bouncing through the Earth’s atmosphere to broadcast the songs of Bruno Mars, Beyoncé and Taylor Swift, can be converted into audible sounds. Dr. Kurth said the background patter was likely oscillations of charged particles in the upper part of Saturn’s ionosphere where atoms are broken apart by solar and cosmic radiation. The louder tones were almost certainly whistler mode emissions” when the charged particles oscillate in unison.</p>
+			<h2>Sifting Through Teaspoons of Clay</h2>
+			<p>And sand scraped from the floors of caves, German researchers have managed to isolate ancient human DNA — without turning up a single bone. Their new technique, described in a study published on Thursday in the journal Science, promises to open new avenues of research into human prehistory and was met with excitement by geneticists and archaeologists. It’s a bit like discovering that you can extract gold dust from the air,” said Adam Siepel, a population geneticist at Cold Spring Harbor Laboratory.An absolutely amazing and exciting paper,” added David Reich, a genetics professor at Harvard who focuses on ancient DNA. Until recently, the only way to study the genes of ancient humans like the Neanderthals and their cousins, the Denisovans, was to recover DNA from fossil bones. But they are scarce and hard to find, which has greatly limited research into where early humans lived and how widely they ranged. The only Denisovan bones and teeth that scientists have, for example, come from a single cave in Siberia.</p>
+			<figure>
+				<table>
+					<caption>Fig 5: Available players.</caption>
+					<thead>
+						<tr>
+							<td></td>
+							<th width="100%">Name</th>
+							<th>Gender</th>
+							<th>Age</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th>Player 1</th>
+							<td>Mike Mai</td>
+							<td>Male</td>
+							<td>25</td>
+						</tr>
+						<tr>
+							<th>Player 2</th>
+							<td>Angi Cheung</td>
+							<td>Female</td>
+							<td>25</td>
+						</tr>
+					</tbody>
+				</table>
+			</figure>
+			<h2>Looking for These Genetic Signposts</h2>
+			<p>In sediment has become possible only in the last few years, with recent developments in technology, including rapid sequencing of DNA. Although DNA sticks to minerals and decayed plants in soil, scientists did not know whether it would ever be possible to fish out gene fragments that were tens of thousands of years old and buried deep among other genetic debris. Bits of genes from ancient humans make up just a minute fraction of the DNA floating around in the natural world. But the German scientists, led by Matthias Meyer at the Max Planck Institute for Developmental Biology in Tübingen, have spent years developing methods to find DNA even where it seemed impossibly scarce and degraded. There’s been a real revolution in technology invented by this lab,” Dr. Reich said. Matthias is kind of a wizard in pushing the envelope.” Scientists began by retrieving DNA from ancient bones: first Neanderthals, then Denisovans. To identify the Denisovans, Svante Paabo, a geneticist at the Planck Institute and a co-author of the new paper, had only a child’s pinkie bone to work with. His group surprised the world in 2010 by reporting that it had extracted DNA from the bone, finding that it belonged to a group of humans distinct from both Neanderthals and modern humans. But that sort of analysis is limited by the availability of fossil bones. In a lot of cases, you can get bones, but not enough,” said Hendrik Poinar, an evolutionary geneticist at McMaster University.</p>
+			<p>If you just have one small piece of bone from one site, curators do not want you to grind it up.</p>
+		</article>
   </main>
 	<footer slot="footer">
 		<p>

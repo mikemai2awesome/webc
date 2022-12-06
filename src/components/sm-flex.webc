@@ -10,7 +10,7 @@
     row-gap: var(--stack);
   }
 
-  sm-flex > * {
+  sm-flexitem {
     flex: 1 1 auto;
     flex-basis: var(--min-inline-size);
     align-items: center;

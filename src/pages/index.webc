@@ -130,12 +130,12 @@ layout: base.njk
             </tr>
             <tr>
               <td>--line-length</td>
-              <td>75ch</td>
+              <td>70ch</td>
               <td>The optimal line length for reading.</td>
             </tr>
             <tr>
               <td>--page-padding-inline</td>
-              <td>Scale from 5vw to whatever is available after subtracting the optimal line length of 75ch from 100% viewpoint width</td>
+              <td>Scale from 5vw to whatever is available after subtracting the optimal line length of 70ch from 100% viewpoint width</td>
               <td>The inline inset spacing of a single-column page layout.</td>
             </tr>
           </tbody>

@@ -17,11 +17,14 @@
     --stack: clamp(1.25ex, 2.5vmax, 1.75ex);
     --line-length: 70ch;
     --min-inline-size: 20ch;
-    --page-padding-inline: calc((100vi - min(var(--line-length), 90vi)) / 2);
+    --page-padding-inline: calc((100vi - min(var(--line-length), 80vi)) / 2);
     --border-width: 1px;
     --border-style: dotted;
     --border-style-readonly: dashed;
     --border-radius: 0.5em;
+    --ol-style-type: decimal;
+    --bullet-hanging-offset: 0;
+    --quote-hanging-offset: -1ex;
   }
 }
 
@@ -158,12 +161,12 @@
 
   :where(blockquote q)::before {
     position: absolute;
-    transform: translateX(-100%);
+    margin-inline-start: var(--quote-hanging-offset);
   }
 
   :where(blockquote q q)::before {
     position: static;
-    transform: unset;
+    margin-inline-start: unset;
   }
 
   :where(strong, b, kbd, th, button) {
@@ -209,6 +212,10 @@
     list-style: none;
   }
 
+  :where(ol) {
+    list-style-type: var(--ol-style-type);
+  }
+
   /* Chinese Typesetting */
   [lang^="zh-"] {
     --font-italic: var(--font);
@@ -221,6 +228,9 @@
     --line-length: 36rem;
     --min-inline-size: 10rem;
     --page-padding-inline: calc((100vi - min(var(--line-length), 90vi)) / 2);
+    --ol-style-type: cjk-ideographic;
+    --bullet-hanging-offset: 2em;
+    --quote-hanging-offset: -2ex;
   }
 }
 
@@ -248,7 +258,7 @@
   }
 
   :where(ul, ol) {
-    padding: 0;
+    padding-inline-start: var(--bullet-hanging-offset);
   }
 
   :where(li > ul, li > ol) {
@@ -391,7 +401,7 @@
       + *
       tr:first-child
       > *:first-child) {
-    border-top-left-radius: var(--border-radius);
+    border-start-start-radius: var(--border-radius);
   }
 
   :where(table > *:first-child tr:first-child > *:last-child, table
@@ -399,15 +409,15 @@
       + *
       tr:first-child
       > *:last-child) {
-    border-top-right-radius: var(--border-radius);
+    border-start-end-radius: var(--border-radius);
   }
 
   :where(table > *:last-child tr:last-child > *:first-child) {
-    border-bottom-left-radius: var(--border-radius);
+    border-end-start-radius: var(--border-radius);
   }
 
   :where(table > *:last-child tr:last-child > *:last-child) {
-    border-bottom-right-radius: var(--border-radius);
+    border-end-end-radius: var(--border-radius);
   }
 
   :where(kbd) {
@@ -510,10 +520,10 @@
 
 @layer complex-elements {
   /* Advanced responsive table */
-  :where(figure):has(table) {
+  :where(figure:has(table)) {
     position: relative;
-    right: 50%;
-    left: 50%;
+    inset-inline-start: 50%;
+    inset-inline-end: 50%;
     inline-size: 100%;
     inline-size: 100vi;
     margin-inline-start: -50vi;

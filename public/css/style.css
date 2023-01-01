@@ -380,7 +380,7 @@
     border: var(--border-width) var(--border-style); /* Unify border styles. */
   }
 
-  :where(input, textarea, select, fieldset, button, img, code, dd, table) {
+  :where(input:not([type="checkbox"]):not([type="radio"]), textarea, select, fieldset, button, img, code, dd, table) {
     border-radius: var(
       --border-radius
     ); /* Unify interactive elements border radius. */

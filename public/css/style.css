@@ -208,12 +208,12 @@
     vertical-align: baseline;
   }
 
-  :where(fieldset > ol) {
-    list-style: none;
-  }
-
   :where(ol) {
     list-style-type: var(--ol-style-type);
+  }
+
+  :where(fieldset > ol) {
+    list-style: none;
   }
 
   /* Chinese Typesetting */

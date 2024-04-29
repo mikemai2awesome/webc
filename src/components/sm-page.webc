@@ -70,6 +70,7 @@
   }
 
   sm-page[layout="hero"] > header {
+    --_max-h1-length: 66rem;
     display: grid;
     grid-template-areas: 
       ". . ."
@@ -78,7 +79,7 @@
       ". subtitle ."
       ". nav ."
       ". . .";
-    grid-template-columns: 5vi 1fr 5vi;
+    grid-template-columns: calc((100dvi - min(var(--_max-h1-length), 90dvi)) / 2) 1fr calc((100dvi - min(var(--_max-h1-length), 90dvi)) / 2);
     grid-template-rows: 1fr calc(4rem + 2vmax) auto auto auto 1fr;
     justify-items: center;
     row-gap: var(--stack);
@@ -131,10 +132,10 @@
     position: absolute;
     inset: 0;
     z-index: 0;
+    opacity: 0.1;
     block-size: 100%;
     inline-size: 100%;
     object-fit: cover;
-    mix-blend-mode: overlay;
     pointer-events: none;
     border-radius: 0;
   }

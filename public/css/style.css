@@ -11,19 +11,20 @@
     --font-weight-regular: 400;
     --font-weight-semibold: 700;
     --font-weight-bold: 900;
-    --tracking: -0.006em; /* Reduce this to 0 if your font does not need adjustment. */
+    --tracking: 0; /* Reduce this to 0 if your font does not need adjustment. */
     --leading: 1.45; /* Standard leading for good legibility. Adjust this based on the font you are using if you decides to not use system UI font. */
     --gutter: clamp(1ch, 2.5vmax, 3ch);
     --stack: clamp(1.25ex, 2.5vmax, 1.75ex);
     --line-length: 70ch;
     --min-inline-size: 20ch;
-    --page-padding-inline: calc((100vi - min(var(--line-length), 80vi)) / 2);
+    --page-padding-inline: calc((100dvi - min(var(--line-length), 80dvi)) / 2);
     --border-width: 1px;
-    --border-style: dotted;
+    --border-style: solid;
     --border-style-readonly: dashed;
     --border-radius: 0.5em;
     --ol-style-type: decimal;
     --bullet-hanging-offset: 0;
+    --quote-hanging-position: absolute;
     --quote-hanging-offset: -1ex;
   }
 }
@@ -36,6 +37,11 @@
     color-scheme: light;
   }
 
+  ::selection {
+    color: var(--color-bg);
+    background: var(--color-text);
+  }
+
   :where(a) {
     color: var(--color-primary, var(--color-text));
   }
@@ -43,6 +49,7 @@
   :where(button) {
     color: var(--color-bg);
     background-color: var(--color-primary, var(--color-text));
+    border-color: transparent;
   }
 
   :where(input, textarea, select) {
@@ -75,14 +82,10 @@
   @media (prefers-color-scheme: dark) {
     :root {
       --font-weight-regular: 300; /* Knockout text appears bolder, reduce weight to make body text more legible. */
-      --tracking: 0.006em;
-      --color-text: #f4f4f4;
-      --color-bg: #202020;
-      color-scheme: dark;
-    }
-
-    :where(input[type="checkbox"], input[type="radio"]) {
+      --color-text: #f0f0f0;
+      --color-bg: #090909;
       accent-color: var(--color-bg);
+      color-scheme: dark;
     }
   }
 
@@ -98,7 +101,7 @@
   :root {
     font-size: clamp(
       var(--font-size),
-      var(--font-size) * 0.9 + 0.25vi,
+      var(--font-size) * 0.9 + 0.25dvi,
       var(--font-size) * 2
     );
     font-family: var(--font);
@@ -151,7 +154,7 @@
   }
 
   :where(blockquote) {
-    font-size: clamp(1.5rem, 1.25rem + 1vi, 3rem);
+    font-size: clamp(1.5rem, 1.25rem + 1dvi, 3rem);
     letter-spacing: 0;
   }
 
@@ -160,7 +163,7 @@
   }
 
   :where(blockquote q)::before {
-    position: absolute;
+    position: var(--quote-hanging-position);
     margin-inline-start: var(--quote-hanging-offset);
   }
 
@@ -227,10 +230,11 @@
     --stack: clamp(0.75rem, 2.5vmax, 1rem);
     --line-length: 36rem;
     --min-inline-size: 10rem;
-    --page-padding-inline: calc((100vi - min(var(--line-length), 90vi)) / 2);
+    --page-padding-inline: calc((100dvi - min(var(--line-length), 90dvi)) / 2);
     --ol-style-type: cjk-ideographic;
     --bullet-hanging-offset: 2em;
-    --quote-hanging-offset: -2ex;
+    --quote-hanging-position: revert;
+    --quote-hanging-offset: revert;
   }
 }
 
@@ -254,7 +258,7 @@
   }
 
   :where(h1, h2, h3, h4, h5, h6) + * {
-    margin-block-start: calc(var(--stack) / 5);
+    margin-block-start: calc(var(--stack) / 3);
   }
 
   :where(ul, ol) {
@@ -357,7 +361,7 @@
   *,
   *::before,
   *::after {
-    font-feature-settings: "kern";
+    font-feature-settings: "kern", "ss06";
     font-kerning: normal;
     -moz-osx-font-smoothing: grayscale !important;
     -webkit-font-smoothing: antialiased !important;
@@ -371,6 +375,7 @@
   }
 
   *:disabled {
+    opacity: 0.8;
     cursor: not-allowed;
   }
 
@@ -378,10 +383,7 @@
     border-style: var(--border-style-readonly);
   }
 
-  :where(button) {
-    border: 0;
-  }
-
+  :where(button),
   :where(kbd) {
     border: var(--border-width) solid;
   }
@@ -390,10 +392,16 @@
     border: var(--border-width) var(--border-style); /* Unify border styles. */
   }
 
+  @media (forced-colors: active) {
+    :where(th, td, code) {
+      border: var(--border-width) solid;
+    }
+  }
+
   :where(input:not([type="checkbox"]):not([type="radio"]), textarea, select, fieldset, button, img, code, dd, table) {
     border-radius: var(
       --border-radius
-    ); /* Unify interactive elements border radius. */
+    ); /* Unify bordered elements border radius. */
   }
 
   :where(table > *:first-child tr:first-child > *:first-child, table
@@ -519,17 +527,17 @@
 }
 
 @layer complex-elements {
-  /* Advanced responsive table */
+  /* Advanced responsive table — causes page horizontal overflow, use with causion or overflow-x:hidden on body.
   :where(figure:has(table)) {
     position: relative;
     inset-inline-start: 50%;
     inset-inline-end: 50%;
     inline-size: 100%;
-    inline-size: 100vi;
-    margin-inline-start: -50vi;
-    margin-inline-end: -50vi;
+    inline-size: 100dvi;
+    margin-inline-start: -50dvi;
+    margin-inline-end: -50dvi;
     padding-inline: var(--page-padding-inline);
-  }
+  } */
 
   /* Validation text */
   :where(input, textarea, select) ~ * {
@@ -537,13 +545,11 @@
     font-size: 0.8em;
   }
 
-  :where(input:required + mark) {
+  :where(input:required + span) {
     display: none;
-    color: var(--color-text);
-    background-color: transparent;
   }
 
-  :where(input:required:invalid + mark) {
+  :where(input:required:invalid + span) {
     display: block;
   }
 

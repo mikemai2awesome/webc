@@ -1,10 +1,10 @@
 <div webc:root>
   <header>
+    <slot name="cover"></slot>
     <slot name="title"></slot>
     <slot name="subtitle"></slot>
     <slot name="nav"></slot>
-    <slot name="cover"></slot>
-    <slot name="avatar"></slot>
+    <slot name="avatar"></slotß>
   </header>
   <slot></slot>
   <slot name="footer"></slot>
@@ -18,6 +18,10 @@
     margin: 0;
     min-block-size: 100vh;
     min-block-size: 100dvb;
+  }
+
+  sm-page > * {
+    min-inline-size: 0;
   }
 
   sm-page > :is(header, main, footer) {
@@ -37,7 +41,7 @@
   sm-page > header > :is(h1 > a, h1, a) {
     display: block;
     font-weight: var(--font-weight-bold);
-    line-height: 1.2;
+    line-height: 1.1;
   }
 
   sm-page > header > nav ul {
@@ -74,7 +78,7 @@
       ". subtitle ."
       ". nav ."
       ". . .";
-    grid-template-columns: 5vw 1fr 5vw;
+    grid-template-columns: 5vi 1fr 5vi;
     grid-template-rows: 1fr calc(4rem + 2vmax) auto auto auto 1fr;
     justify-items: center;
     row-gap: var(--stack);
@@ -90,15 +94,20 @@
     text-align: center;
   }
 
+  sm-page[layout="hero"] > header > *:not(img:first-child) {
+    position: relative;
+    z-index: 1;
+  }
+
   sm-page[layout="hero"] > header > :is(h1, h1 > a, a) {
     grid-area: title;
-    font-size: clamp(2.25rem, 2.125rem + 8vw, 9rem);
+    font-size: clamp(2.25rem, 2.125rem + 8vi, 9rem);
     letter-spacing: -0.04em;
   }
 
   sm-page[layout="hero"] > header > p {
     grid-area: subtitle;
-    font-size: clamp(1.25rem, 1.125rem + 8vw, 3rem);
+    font-size: clamp(1.25rem, 1.125rem + 8vi, 3rem);
   }
 
   sm-page[layout="hero"] > header > nav {
@@ -109,25 +118,25 @@
     justify-content: center;
   }
 
-  sm-page[layout="hero"] > header > img:first-of-type {
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    block-size: 100%;
-    inline-size: 100%;
-    object-fit: cover;
-    mix-blend-mode: overlay;
-    pointer-events: none;
-    border-radius: 0;
-  }
-
-  sm-page[layout="hero"] > header > img:last-of-type {
+  sm-page[layout="hero"] > header > img:last-child {
     grid-area: avatar;
     block-size: calc(4rem + 2vmax);
     inline-size: calc(4rem + 2vmax);
     aspect-ratio: 1/1;
     object-fit: cover;
     border-radius: 100em;
+  }
+
+  sm-page[layout="hero"] > header > img:first-child {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    block-size: 100%;
+    inline-size: 100%;
+    object-fit: cover;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    border-radius: 0;
   }
 
   sm-page[layout="profile"] > header {
@@ -186,7 +195,7 @@
     grid-area: title;
     align-self: center;
     margin-block-start: calc(var(--stack) / 2);
-    font-size: clamp(1.75rem, 1.5rem + 0.25vw, 2.75rem);
+    font-size: clamp(1.75rem, 1.5rem + 0.25vi, 2.75rem);
   }
 
   sm-page[layout="profile"] > header > p {
@@ -202,7 +211,6 @@
   }
 
   sm-page[layout="classic"] > * {
-    inline-size: 100vw;
     margin: 0;
   }
 
@@ -212,7 +220,7 @@
   }
 
   sm-page[layout="classic"] > header > :is(h1, h1 > a, a) {
-    font-size: clamp(1.5rem, 1.25rem + 0.25vw, 2.75rem);
+    font-size: clamp(1.5rem, 1.25rem + 0.25vi, 2.75rem);
   }
 
   sm-page[layout="classic"] > footer {

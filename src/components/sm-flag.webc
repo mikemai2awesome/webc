@@ -21,7 +21,7 @@
   }
 
   sm-flag > *:nth-child(odd) {
-    inline-size: clamp(5ch, 4ch + 6vw, 25ch);
+    inline-size: clamp(5ch, 4ch + 6dvi, 25ch);
     align-self: start;
   }
 

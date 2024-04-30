@@ -1,7 +1,11 @@
 @layer config {
-  :root {
-    --color-text: #202020;
-    --color-bg: #f4f4f4;
+  :root,
+  [data-theme="light"] {
+    --brand-off-black-1: #202020;
+    --brand-off-black-2: #090909;
+    --brand-off-white-1: #f4f4f4;
+    --brand-off-white-2: #f0f0f0;
+
     --font: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
       "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", sans-serif; /* Use system UI font. */
     --font-italic: "Georgia", serif; /* Remove this var completely if you don't care for pretty italics. */
@@ -13,28 +17,72 @@
     --font-weight-bold: 900;
     --tracking: 0; /* Reduce this to 0 if your font does not need adjustment. */
     --leading: 1.45; /* Standard leading for good legibility. Adjust this based on the font you are using if you decides to not use system UI font. */
+
     --gutter: clamp(1ch, 2.5vmax, 3ch);
     --stack: clamp(1.25ex, 2.5vmax, 1.75ex);
     --line-length: 70ch;
     --min-inline-size: 20ch;
     --page-padding-inline: calc((100dvi - min(var(--line-length), 80dvi)) / 2);
+
     --border-width: 1px;
     --border-style: solid;
     --border-style-readonly: dashed;
     --border-radius: 0.5em;
+    
     --ol-style-type: decimal;
     --bullet-hanging-offset: 0;
     --quote-hanging-position: absolute;
     --quote-hanging-offset: -1ex;
+
+    --color-text: var(--brand-off-black-1);
+    --color-bg: var(--brand-off-white-1);
+    --color-accent: var(--brand-off-black-1);
+
+    @media (prefers-contrast: more) {
+      --color-text: black;
+      --color-bg: white;
+      --color-accent: black;
+    }
+  }
+
+  [data-theme="dark"] {
+    --font-weight-regular: 300; /* Knockout text appears bolder, reduce weight to make body text more legible. */
+    --color-text: var(--brand-off-white-2);
+    --color-bg: var(--brand-off-black-2);
+    --color-accent: var(--brand-off-black-2);
+    color-scheme: dark;
+
+    @media (prefers-contrast: more) {
+      --color-text: white;
+      --color-bg: black;
+      --color-accent: black;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    /* Repeating dark theme styles for dark mode */
+    :root {
+      --font-weight-regular: 300; /* Knockout text appears bolder, reduce weight to make body text more legible. */
+      --color-text: var(--brand-off-white-2);
+      --color-bg: var(--brand-off-black-2);
+      --color-accent: var(--brand-off-black-2);
+      color-scheme: dark;
+
+      @media (prefers-contrast: more) {
+        --color-text: white;
+        --color-bg: black;
+        --color-accent: black;
+      }
+    }
   }
 }
 
 @layer color {
-  :root {
+  :root,
+  [data-theme] {
     color: var(--color-text);
     background-color: var(--color-bg);
-    accent-color: var(--color-text);
-    color-scheme: light;
+    accent-color: var(--color-accent);
   }
 
   ::selection {
@@ -70,30 +118,6 @@
 
   :where(th, td) {
     background-color: var(--color-bg);
-  }
-
-  @media (prefers-contrast: more) {
-    :root {
-      --color-text: black;
-      --color-bg: white;
-    }
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --font-weight-regular: 300; /* Knockout text appears bolder, reduce weight to make body text more legible. */
-      --color-text: #f0f0f0;
-      --color-bg: #090909;
-      accent-color: var(--color-bg);
-      color-scheme: dark;
-    }
-  }
-
-  @media (prefers-color-scheme: dark) and (prefers-contrast: more) {
-    :root {
-      --color-text: white;
-      --color-bg: black;
-    }
   }
 }
 

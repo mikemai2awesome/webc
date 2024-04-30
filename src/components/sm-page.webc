@@ -16,7 +16,6 @@
     display: grid;
     grid-template-rows: auto 1fr auto;
     margin: 0;
-    min-block-size: 100vh;
     min-block-size: 100dvb;
   }
 
@@ -84,7 +83,6 @@
     justify-items: center;
     row-gap: var(--stack);
     position: relative;
-    min-block-size: 100vh;
     min-block-size: 100dvb;
     padding-inline: 0;
     border-block: calc(var(--border-width) * 10) solid;

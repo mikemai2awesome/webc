@@ -28,7 +28,7 @@
     --border-style: solid;
     --border-style-readonly: dashed;
     --border-radius: 0.5em;
-    
+
     --ol-style-type: decimal;
     --bullet-hanging-offset: 0;
     --quote-hanging-position: absolute;
@@ -123,15 +123,23 @@
 
 @layer typography {
   :root {
-    font-size: clamp(
+    --_font-size: clamp(
       var(--font-size),
       var(--font-size) * 0.9 + 0.25dvi,
       var(--font-size) * 2
     );
+    font-size: var(--_font-size);
+    font: -apple-system-body; /* iOS reset to user OS preferences — thanks, Chris LaChance! */
     font-family: var(--font);
     font-weight: var(--font-weight-regular);
     line-height: var(--leading);
     letter-spacing: var(--tracking);
+
+    @supports (font: -apple-system-body) and
+      (not (-webkit-touch-callout: default)) {
+      /* Make sure desktop Safari doesn't pick up broken iOS issues. */
+      font-size: var(--_font-size);
+    }
   }
 
   :where(button, select, input, textarea, a) {
@@ -183,7 +191,7 @@
   }
 
   :where(blockquote p) {
-    max-inline-size: 35ch;
+    text-wrap: pretty;
   }
 
   :where(blockquote q)::before {
@@ -200,6 +208,10 @@
     font-weight: var(
       --font-weight-semibold
     ); /* Make non-heading emphasized text less bold than heading text. */
+  }
+
+  :where(h1, h2, h3, h4, h5, h6) {
+    line-height: 1.2;
   }
 
   :where(h1, h2, h3, h4, h5, h6, summary strong, legend) {
@@ -283,7 +295,7 @@
   }
 
   :where(h1, h2, h3, h4, h5, h6) + * {
-    margin-block-start: calc(var(--stack) / 3);
+    margin-block-start: calc(var(--stack) / 1.5);
   }
 
   :where(ul, ol) {

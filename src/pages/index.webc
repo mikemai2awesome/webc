@@ -18,7 +18,7 @@ layout: base.njk
   <main id="main-content">
     <h2>About</h2>
 		<p><big><span @html="{{ title }}"></span> is a design system composed with <strong>black &amp; white</strong> CSS awesomeness with nice typography. Compatible with both Latin characters and Chinese characters.</big></p>
-		<figure>
+		<figure role="presentation">
 			<table>
         <caption><span @html="{{ title }}"></span>&rsquo;s design principles.</caption>
 				<tbody>
@@ -78,7 +78,7 @@ layout: base.njk
     <p>The system is built on a small set of design tokens.</p>
 		<details open>
       <summary><strong>Color (or lack thereof)</strong></summary>
-      <figure>
+      <figure role="presentation">
         <table>
           <caption>Super Minimal color tokens.</caption>
           <thead>
@@ -110,7 +110,7 @@ layout: base.njk
     </details>
     <details>
       <summary><strong>Spacing</strong></summary>
-      <figure>
+      <figure role="presentation">
         <table>
           <caption>Super Minimal spacing tokens.</caption>
           <thead>
@@ -149,7 +149,7 @@ layout: base.njk
     </details>
     <details>
       <summary><strong>Typography</strong></summary>
-      <figure>
+      <figure role="presentation">
         <table>
           <caption>Super Minimal typography tokens.</caption>
           <thead>
@@ -286,7 +286,7 @@ layout: base.njk
     </details>
     <details>
       <summary><strong>Table</strong></summary>
-      <figure>
+      <figure role="presentation">
         <table>
           <caption>Table caption.</caption>
           <thead>
@@ -512,7 +512,7 @@ layout: base.njk
     </details>
     <h3>Flag</h3>
     <p>A Flag is composed of a signifier (image, icon, etc.) and content.</p>
-    <figure>
+    <figure role="presentation">
       <table>
         <caption>Flag component props.</caption>
         <thead>
@@ -553,7 +553,7 @@ layout: base.njk
     </details>
 		<h3>Page</h3>
     <p>A Page defines the layout for the entire page. Each layout is made up of header, main content, and footer. Header and footer are pushed against the top and bottom of the page respectively, regardless of how tall the main content is. The content has a max width of 75 characters, which is the optimal line length.</p>
-    <figure>
+    <figure role="presentation">
       <table>
         <caption>Page component props.</caption>
         <thead>
@@ -578,12 +578,39 @@ layout: base.njk
         </tbody>
       </table>
     </figure>
-    <details open>
+    <figure role="presentation">
+      <table>
+        <caption>Page component slots.</caption>
+        <thead>
+          <tr>
+            <th>Slot</th>
+            <th>Value</th>
+            <th width="100%">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Layout</td>
+            <td><code>title</code>, <code>subtitle</code>, <code>nav</code>, <code>footer</code>, <code>cover</code>, <code>avatar</code></td>
+            <td>
+              <ul>
+                <li>Title is the page H1.</li>
+                <li>Subtitle is the page lede text.</li>
+                <li>Nav is the page navigation.</li>
+                <li>Footer is the page footer.</li>
+                <li>Cover is the cover image for hero and profile pages.</li>
+                <li>Avatar is the avatar image for hero and profile pages.</li>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </figure>
+    <details open name="page-demo">
       <summary>
-        <p>Page Code</p>
+        <p>Classic Page Code</p>
       </summary>
-      <pre contenteditable><code>&lt;!-- Classic Page --&gt;
-&lt;sm-page layout="classic"&gt;
+      <pre contenteditable><code>&lt;sm-page layout="classic"&gt;
 &nbsp;&nbsp;&lt;h1 slot="title"&gt;
 &nbsp;&nbsp;&nbsp;&nbsp;Title
 &nbsp;&nbsp;&lt;/h1&gt;
@@ -598,10 +625,13 @@ layout: base.njk
 &nbsp;&nbsp;&lt;footer slot="footer"&gt;
 &nbsp;&nbsp;&nbsp;&nbsp;Footer
 &nbsp;&nbsp;&lt;/footer&gt;
-&lt;/sm-page&gt;
-
-&lt;!-- Hero Page --&gt;
-&lt;sm-page layout="hero"&gt;
+&lt;/sm-page&gt;</code></pre>
+    </details>
+    <details name="page-demo">
+      <summary>
+        <p>Hero Page Code</p>
+      </summary>
+      <pre contenteditable><code>&lt;sm-page layout="hero"&gt;
 &nbsp;&nbsp;&lt;h1 slot="title"&gt;
 &nbsp;&nbsp;&nbsp;&nbsp;Title
 &nbsp;&nbsp;&lt;/h1&gt;
@@ -619,10 +649,13 @@ layout: base.njk
 &nbsp;&nbsp;&lt;footer slot="footer"&gt;
 &nbsp;&nbsp;&nbsp;&nbsp;Footer
 &nbsp;&nbsp;&lt;/footer&gt;
-&lt;/sm-page&gt;
-
-&lt;!-- Profile Page --&gt;
-&lt;sm-page layout="profile"&gt;
+&lt;/sm-page&gt;</code></pre>
+    </details>
+    <details name="page-demo">
+      <summary>
+        <p>Profile Page Code</p>
+      </summary>
+      <pre contenteditable><code>&lt;sm-page layout="profile"&gt;
 &nbsp;&nbsp;&lt;img slot="cover" src="cover.jpg" alt="" width=1719 height=968&gt;
 &nbsp;&nbsp;&lt;img slot="avatar" src="avatar.jpg" alt="" width=500 height=500&gt;
 &nbsp;&nbsp;&lt;h1 slot="title"&gt;
@@ -701,7 +734,7 @@ layout: base.njk
       <p>But space is full of radio waves, recorded by Dr. Kurth’s instrument, and those waves, just like the ones bouncing through the Earth’s atmosphere to broadcast the songs of Bruno Mars, Beyoncé and Taylor Swift, can be converted into audible sounds. Dr. Kurth said the background patter was likely oscillations of charged particles in the upper part of Saturn’s ionosphere where atoms are broken apart by solar and cosmic radiation. The louder tones were almost certainly whistler mode emissions” when the charged particles oscillate in unison.</p>
       <h2>Sifting Through Teaspoons of Clay</h2>
       <p>And sand scraped from the floors of caves, German researchers have managed to isolate ancient human DNA — without turning up a single bone. Their new technique, described in a study published on Thursday in the journal Science, promises to open new avenues of research into human prehistory and was met with excitement by geneticists and archaeologists. It’s a bit like discovering that you can extract gold dust from the air,” said Adam Siepel, a population geneticist at Cold Spring Harbor Laboratory.An absolutely amazing and exciting paper,” added David Reich, a genetics professor at Harvard who focuses on ancient DNA. Until recently, the only way to study the genes of ancient humans like the Neanderthals and their cousins, the Denisovans, was to recover DNA from fossil bones. But they are scarce and hard to find, which has greatly limited research into where early humans lived and how widely they ranged. The only Denisovan bones and teeth that scientists have, for example, come from a single cave in Siberia.</p>
-      <figure>
+      <figure role="presentation">
         <table>
           <caption>Fig 5: Available players.</caption>
           <thead>
